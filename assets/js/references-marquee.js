@@ -24,7 +24,7 @@
     measure();
     window.addEventListener("resize", measure);
 
-    var speed = 0.45; // px per frame, ~27px/s at 60fps
+    var speed = 0.9; // px per frame, ~54px/s at 60fps (medium pace)
     var paused = false;
     var pauseTimer;
     // Track true (fractional) scroll position ourselves — the browser
