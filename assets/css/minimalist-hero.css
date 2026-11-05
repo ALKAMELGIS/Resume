@@ -40,6 +40,7 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #1c1c1c;
+  text-decoration: none;
   opacity: 0;
   animation: mhFadeInLeft 0.5s ease forwards;
 }

@@ -38,30 +38,26 @@ a:hover { color: #0a7ad6; }
 ::selection { background: var(--mh-amber); color: #1c1c1c; }
 
 /* ---------- Sidebar nav ----------
-   Left as the original template styled it (blue pill nav,
-   white background) — not part of the minimalist re-theme. */
+   Removed per request — the hero's own top header (logo + text
+   nav) is now the site's only navigation, so the fixed icon
+   sidebar and its reserved left margin are gone. */
+#main {
+  margin-left: 0 !important;
+}
 
-/* ---------- Hero sidebar offset ----------
+/* ---------- Hero full-width ----------
    #hero (id selector, specificity 1-0-0) in style.css sets
-   width:100% and, at >=992px, padding-left:160px. Both beat the
-   plain .mh-hero class rules, so we match that specificity here
-   with #hero.mh-hero to actually win the cascade. */
+   width:100%. We match that specificity here with #hero.mh-hero
+   to win the cascade for our own background/height overrides. */
 #hero.mh-hero {
   background: transparent;
   height: auto;
   min-height: 100vh;
 }
 
-@media (min-width: 991px) {
-  #hero.mh-hero {
-    margin-left: 100px;
-    width: calc(100% - 100px);
-  }
-}
-
 @media (min-width: 992px) {
   #hero.mh-hero {
-    padding-left: 56px;
+    padding-left: 0;
   }
 }
 
