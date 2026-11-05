@@ -1,0 +1,190 @@
+/* ==========================================================
+   Moments — a hanging "polaroid clothesline" gallery for event
+   and field photos, placed right after Map Showcase. A sagging
+   line (SVG) runs behind a row of tilted polaroid cards, each
+   clipped to it with a small peg; the whole row auto-scrolls
+   sideways (same rAF technique as the References marquee), pauses
+   on hover, and can be nudged with the arrow buttons.
+   ========================================================== */
+
+.mo-section {
+  position: relative;
+  background: transparent !important;
+  padding: 90px 24px 110px;
+  overflow: hidden;
+}
+
+.mo-section .section-title h2 {
+  color: var(--mh-ink-soft);
+}
+
+.mo-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.mo-intro {
+  max-width: 560px;
+  color: var(--mh-ink-soft);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.mo-line-wrap {
+  position: relative;
+  margin-top: 64px;
+}
+
+.mo-rail {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+}
+
+.mo-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.mo-track {
+  position: relative;
+  display: flex;
+  width: max-content;
+  gap: 44px;
+  padding: 28px 10px 0;
+}
+
+/* The clothesline itself — part of the scrolling track, so it
+   stays attached under every peg no matter how far the row has
+   scrolled, and travels along with the auto-scroll animation. */
+.mo-track::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: -40px;
+  right: -40px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(107, 84, 48, 0.55) 0,
+    rgba(107, 84, 48, 0.55) 7px,
+    rgba(107, 84, 48, 0.2) 7px,
+    rgba(107, 84, 48, 0.2) 11px
+  );
+}
+
+.mo-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 220px;
+  background: #fff;
+  padding: 14px 14px 36px;
+  border-radius: 2px;
+  box-shadow: 0 18px 34px rgba(28, 28, 28, 0.16), 0 2px 6px rgba(28, 28, 28, 0.08);
+  transform: rotate(var(--mo-tilt, -2deg));
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+@media (min-width: 768px) {
+  .mo-card {
+    width: 250px;
+  }
+}
+
+.mo-card:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.03);
+  box-shadow: 0 26px 46px rgba(28, 28, 28, 0.22), 0 4px 10px rgba(28, 28, 28, 0.1);
+  z-index: 5;
+}
+
+.mo-card:nth-child(4n+1) { --mo-tilt: -3deg; }
+.mo-card:nth-child(4n+2) { --mo-tilt: 2deg; }
+.mo-card:nth-child(4n+3) { --mo-tilt: -1.5deg; }
+.mo-card:nth-child(4n+4) { --mo-tilt: 3deg; }
+
+.mo-peg {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 22px;
+  background: linear-gradient(180deg, #d8b979, #b7883f);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(28, 28, 28, 0.25);
+}
+
+.mo-peg::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  width: 1px;
+  height: 14px;
+  background: rgba(28, 28, 28, 0.25);
+  transform: translateX(-50%);
+}
+
+.mo-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #e8e5dd;
+}
+
+.mo-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mo-caption {
+  display: block;
+  margin-top: 14px;
+  text-align: center;
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--mh-ink-soft);
+}
+
+.mo-arrow {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(28, 28, 28, 0.15);
+  background: var(--mh-bg, #fbfaf8);
+  color: var(--mh-ink, #1c1c1c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(28, 28, 28, 0.12);
+  transition: background 0.25s, color 0.25s;
+}
+
+.mo-arrow:hover {
+  background: var(--mh-ink, #1c1c1c);
+  color: #fff;
+}
+
+.mo-arrow-prev { left: -8px; }
+.mo-arrow-next { right: -8px; }
+
+@media (max-width: 575px) {
+  .mo-arrow {
+    display: none;
+  }
+}
