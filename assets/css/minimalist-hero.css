@@ -214,11 +214,35 @@
   height: 300px;
   width: 300px;
   border-radius: 50%;
+  overflow: hidden;
   background: rgba(226, 169, 72, 0.85);
   opacity: 0;
   transform: scale(0.8);
   animation: mhScaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 0.2s;
+}
+
+/* Thin, faint, slowly-rotating topographic contour lines inside
+   the circle — a professional "map" texture, not a flat fill. */
+.mh-hero .mh-circle::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background-image: url("../img/circle-contour.svg");
+  background-size: cover;
+  background-position: center;
+  animation: mhCircleRotate 50s linear infinite;
+}
+
+@keyframes mhCircleRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-hero .mh-circle::before {
+    animation: none;
+  }
 }
 
 @media (min-width: 768px) {
