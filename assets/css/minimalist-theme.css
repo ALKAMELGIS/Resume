@@ -1,0 +1,312 @@
+/* ==========================================================
+   Minimalist Theme — site-wide skin extending the minimalist
+   hero aesthetic (warm off-white, charcoal type, blue + amber
+   accents) across every section: About, Resume, Portfolio,
+   Services, Testimonials, Contact, Footer and the sidebar nav.
+   Loads after style.css and minimalist-hero.css and overrides
+   colors/spacing only — template structure/classes are kept.
+   ========================================================== */
+
+:root {
+  --mh-bg: #fbfaf8;
+  --mh-bg-alt: #f3f1ec;
+  --mh-ink: #1c1c1c;
+  --mh-ink-soft: rgba(28, 28, 28, 0.65);
+  --mh-accent: #0563bb;
+  --mh-accent-soft: rgba(5, 99, 187, 0.1);
+  --mh-amber: #e2a948;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--mh-ink);
+  background-color: var(--mh-bg);
+  background-image: url("../img/contour-bg.svg");
+  background-repeat: repeat;
+  background-size: 640px 640px;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--mh-accent); }
+a:hover { color: #0a7ad6; }
+
+::selection { background: var(--mh-amber); color: #1c1c1c; }
+
+/* ---------- Sidebar nav ----------
+   Left as the original template styled it (blue pill nav,
+   white background) — not part of the minimalist re-theme. */
+
+/* ---------- Hero sidebar offset ----------
+   #hero (id selector, specificity 1-0-0) in style.css sets
+   width:100% and, at >=992px, padding-left:160px. Both beat the
+   plain .mh-hero class rules, so we match that specificity here
+   with #hero.mh-hero to actually win the cascade. */
+#hero.mh-hero {
+  background: transparent;
+  height: auto;
+  min-height: 100vh;
+}
+
+@media (min-width: 991px) {
+  #hero.mh-hero {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+  }
+}
+
+@media (min-width: 992px) {
+  #hero.mh-hero {
+    padding-left: 56px;
+  }
+}
+
+/* ---------- Section titles ---------- */
+.section-title {
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mh-ink-soft);
+  padding: 0;
+}
+
+.section-title h2::before,
+.section-title h2::after {
+  display: none;
+}
+
+.section-title p {
+  margin-top: 8px;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--mh-ink);
+  text-transform: none;
+  font-family: "Poppins", sans-serif;
+}
+
+@media (min-width: 768px) {
+  .section-title p { font-size: 40px; }
+}
+
+/* Sections stay transparent so the fixed contour texture on
+   body reads as one continuous background across the page;
+   .section-bg gets a faint tint instead of a solid fill so the
+   contour lines still show through its "alternating" sections. */
+section { background: transparent !important; }
+.section-bg { background: rgba(28, 28, 28, 0.025) !important; }
+
+/* ---------- About ---------- */
+.about .content h3 {
+  color: var(--mh-ink);
+  font-weight: 700;
+}
+
+.about .content ul li {
+  border-color: #e7e3da;
+}
+
+.about .content ul strong {
+  color: var(--mh-ink);
+}
+
+.about .content ul i,
+.about .content .btn-learn-more {
+  color: var(--mh-accent);
+}
+
+.about .content .btn-learn-more {
+  background: transparent;
+  border: 1px solid var(--mh-ink);
+  color: var(--mh-ink);
+  border-radius: 999px;
+}
+
+.about .content .btn-learn-more:hover {
+  background: var(--mh-ink);
+  color: var(--mh-bg);
+}
+
+.about .progress .skill {
+  color: var(--mh-ink);
+}
+
+.about .progress-bar {
+  background-color: var(--mh-ink) !important;
+}
+
+/* ---------- Resume ---------- */
+.resume .resume-title {
+  color: var(--mh-ink);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.resume .resume-item {
+  border-left-color: #e7e3da;
+  padding: 0 0 25px 25px;
+  margin-top: 25px;
+}
+
+.resume .resume-item::before {
+  background: var(--mh-bg);
+  border-color: var(--mh-amber);
+}
+
+.resume .resume-item h4 {
+  color: var(--mh-ink);
+  font-weight: 700;
+}
+
+.resume .resume-item h5 {
+  background: var(--mh-bg-alt);
+  color: var(--mh-ink-soft);
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+/* ---------- Portfolio ---------- */
+.portfolio #portfolio-flters li {
+  color: var(--mh-ink-soft);
+}
+
+.portfolio #portfolio-flters li:hover,
+.portfolio #portfolio-flters li.filter-active {
+  color: var(--mh-ink);
+  border-bottom: 2px solid var(--mh-amber);
+}
+
+.portfolio .portfolio-wrap::before {
+  background: rgba(28, 28, 28, 0.55);
+}
+
+.portfolio .portfolio-wrap .portfolio-info h4 {
+  color: #fff;
+}
+
+.portfolio .portfolio-wrap .portfolio-info p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---------- Services ---------- */
+.services .icon-box {
+  background: #fff;
+  border: 1px solid #ece8e0;
+  border-radius: 18px;
+  box-shadow: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.services .icon-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(28, 28, 28, 0.08);
+}
+
+.services .icon-box h4 a {
+  color: var(--mh-ink);
+}
+
+.services .icon-box p {
+  color: var(--mh-ink-soft);
+}
+
+.services .icon-box .icon,
+.services .iconbox-blue i,
+.services .iconbox-orange i,
+.services .iconbox-green i,
+.services .iconbox-red i,
+.services .iconbox-yellow i,
+.services .iconbox-pink i {
+  color: var(--mh-ink) !important;
+}
+
+/* ---------- Testimonials ---------- */
+.testimonials .testimonial-item .testimonial-img {
+  border-color: var(--mh-amber);
+}
+
+.testimonials .testimonial-item h3 {
+  color: var(--mh-ink);
+}
+
+.testimonials .testimonial-item h4 {
+  color: var(--mh-ink-soft);
+}
+
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
+  color: var(--mh-accent-soft);
+}
+
+/* ---------- Contact ---------- */
+.contact .info-box i {
+  color: var(--mh-accent);
+  background: var(--mh-accent-soft);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.contact .info-box h3 {
+  color: var(--mh-ink);
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  border: none;
+  border-bottom: 1px solid #d8d3c8;
+  border-radius: 0;
+  background: transparent;
+  padding-left: 0;
+}
+
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--mh-ink);
+  box-shadow: none;
+}
+
+.contact .php-email-form button[type="submit"] {
+  background: var(--mh-ink);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 32px;
+}
+
+.contact .php-email-form button[type="submit"]:hover {
+  background: var(--mh-accent);
+}
+
+/* ---------- Footer ---------- */
+#footer {
+  background: var(--mh-ink);
+  color: rgba(251, 250, 248, 0.75);
+}
+
+#footer h3 {
+  color: var(--mh-bg);
+}
+
+#footer .social-links a {
+  background: rgba(251, 250, 248, 0.08);
+  color: var(--mh-bg);
+}
+
+#footer .social-links a:hover {
+  background: var(--mh-accent);
+}
+
+#footer .copyright,
+#footer .credits {
+  color: rgba(251, 250, 248, 0.55);
+}

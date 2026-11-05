@@ -1,0 +1,61 @@
+/* ==========================================================
+   Cursor FX — a refined, site-wide pointer interaction: a thin
+   ring that trails the mouse and expands over clickable things,
+   plus a restrained magnetic pull on primary buttons/nav icons.
+   Desktop + fine-pointer only; respects reduced-motion.
+   ========================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor-fx,
+  html.has-cursor-fx a,
+  html.has-cursor-fx button,
+  html.has-cursor-fx .mw-card {
+    cursor: none;
+  }
+
+  .cfx-dot,
+  .cfx-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+  }
+
+  .cfx-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--mh-ink, #1c1c1c);
+    transition: opacity 0.2s;
+  }
+
+  .cfx-ring {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid rgba(28, 28, 28, 0.35);
+    transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.25s, opacity 0.2s;
+  }
+
+  html.cfx-active .cfx-ring {
+    width: 56px;
+    height: 56px;
+    border-color: #e2a948;
+  }
+
+  html.cfx-hidden .cfx-dot,
+  html.cfx-hidden .cfx-ring {
+    opacity: 0;
+  }
+}
+
+/* elements the cursor should react to + get a gentle magnetic pull */
+.cfx-magnetic {
+  display: inline-block;
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -26,6 +26,11 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/minimalist-hero.css" rel="stylesheet">
+  <link href="assets/css/minimalist-theme.css" rel="stylesheet">
+  <link href="assets/css/map-showcase.css" rel="stylesheet">
+  <link href="assets/css/cursor-fx.css" rel="stylesheet">
+  <link href="assets/css/references-marquee.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: MyResume - v4.9.2
@@ -48,7 +53,7 @@
         <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
         <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
         <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+        <li><a href="#map-showcase" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
         <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
         <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
       </ul>
@@ -56,18 +61,35 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1>MOHAMED ALKAMEL</h1>
-      <p>I'm <span class="typed" data-typed-items="GIS Specialist , Cartographer Designer, Developer, Freelancer, Photographer"></span></p>
-      <div class="social-links">
-        <a href="https://twitter.com/Alkamelgis" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.facebook.com/Alkamelgeo" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="https://github.com/ALKAMELGIS" class="github"><i class="bx bxl-github"></i></a>
-        <a href="https://wa.link/ppd0gs" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
-        <a href="https://www.linkedin.com/in/alkamelgis/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+  <!-- ======= Hero Section (Minimalist) ======= -->
+  <section id="hero" class="mh-hero d-flex flex-column justify-content-center">
+    <!-- Main -->
+    <div class="mh-main">
+      <div class="mh-text-left">
+        <p>GIS Specialist &amp; Cartographer Designer with several years of experience across geo-location, geo-marketing and large-scale spatial data management.</p>
+        <a href="#about" class="scrollto">Read More</a>
       </div>
+
+      <div class="mh-image-wrap">
+        <div class="mh-circle"></div>
+        <img src="assets/img/profile-minimal.png" alt="Portrait of Mohamed Alkamel" class="mh-photo">
+      </div>
+
+      <div class="mh-text-right">
+        <h1><span class="mh-role">GIS SPECIALIST</span>MOHAMED<br>ALKAMEL</h1>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mh-footer">
+      <div class="mh-social">
+        <a href="https://twitter.com/Alkamelgis" target="_blank" rel="noopener noreferrer"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/Alkamelgeo" target="_blank" rel="noopener noreferrer"><i class="bx bxl-facebook"></i></a>
+        <a href="https://github.com/ALKAMELGIS" target="_blank" rel="noopener noreferrer"><i class="bx bxl-github"></i></a>
+        <a href="https://wa.link/ppd0gs" target="_blank" rel="noopener noreferrer"><i class="bx bxl-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/alkamelgis/" target="_blank" rel="noopener noreferrer"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="mh-location">Abu Dhabi, UAE</div>
     </div>
   </section><!-- End Hero -->
 
@@ -197,158 +219,50 @@
       </div>
     </section><!-- End Resume Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
+
+    <!-- ======= Map Work Showcase ======= -->
+    <section id="map-showcase" class="mw-section">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>I'm Provide map service that makes maps, features, and attribute data available inside many types of client applications and can I expose different levels of capabilities.</p>
+          <h2>Selected Work</h2>
+          <p>Map Showcase</p>
         </div>
+        <div class="mw-wrap">
+          <p class="mw-intro">A handful of cartography, geodatabase and dashboard projects — drag or click through the stack, or use the arrow keys.</p>
 
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
+          <div class="mw-root" tabindex="0" data-items='[
+            {"img":"assets/img/showcase/elephant-habitats.jpg","title":"African Elephant Habitats","desc":"Atlas mapping of African elephant distribution — an estimated 415,000 across the continent.","href":"assets/img/showcase/elephant-habitats.jpg"},
+            {"img":"assets/img/showcase/philippine-eagle.jpg","title":"Philippine Eagle Suitable Habitats","desc":"2.8M hectares of remaining forest supporting the critically endangered Philippine eagle.","href":"assets/img/showcase/philippine-eagle.jpg"},
+            {"img":"assets/img/showcase/philippines-volcanoes.jpg","title":"Archipelago Built Upon Volcanoes","desc":"Mapping the Philippines’ 24 active and 18 potentially active volcanoes.","href":"assets/img/showcase/philippines-volcanoes.jpg"},
+            {"img":"assets/img/showcase/dibba-municipality.jpg","title":"Dibba Municipality, UAE","desc":"Illustrated 3D relief map of Dibba Al-Fujairah’s coastline and terrain.","href":"assets/img/showcase/dibba-municipality.jpg"},
+            {"img":"assets/img/showcase/dibba-al-fujairah.jpg","title":"Dibba Al-Fujairah — Coast & Reef","desc":"3D terrain and bathymetry map with an underwater coral reef cross-section.","href":"assets/img/showcase/dibba-al-fujairah.jpg"},
+            {"img":"assets/img/showcase/sudan-earthquake-risk.jpg","title":"Sudan Earthquake Risk, 2000–2020","desc":"PGA kriging interpolation predicting seismic activity and impact across North & South Sudan.","href":"assets/img/showcase/sudan-earthquake-risk.jpg"},
+            {"img":"assets/img/showcase/bawadi-mall-coverage.jpg","title":"Bawadi Mall Service Coverage","desc":"Drive-time network analysis (5–10–15 min) for a retail catchment in Al Ain, Abu Dhabi.","href":"assets/img/showcase/bawadi-mall-coverage.jpg"},
+            {"img":"assets/img/portfolio/portfolio-1.jpg","title":"Siting a Mobile Health Clinic","desc":"Location-allocation GIS modeling to find optimal clinic sites in Khartoum.","href":"assets/img/portfolio/portfolio-1.jpg"},
+            {"img":"assets/img/portfolio/portfolio-7.jpg","title":"UAE Population Density","desc":"Choropleth cartography of population distribution across the Emirates.","href":"assets/img/portfolio/portfolio-7.jpg"},
+            {"img":"assets/img/portfolio/portfolio-4.jpg","title":"Red Sea, Sudan — 3D Terrain","desc":"Illustrative 3D cartographic rendering of the Red Sea coastline and seabed.","href":"assets/img/portfolio/portfolio-4.jpg"},
+            {"img":"assets/img/portfolio/portfolio-8.jpg","title":"Port Sudan Water Supply","desc":"Water resource management study for the Arbaat Dam reservoir.","href":"assets/img/portfolio/portfolio-8.jpg"},
+            {"img":"assets/img/portfolio/portfolio-2.jpg","title":"West Darfur Health Coverage","desc":"Feasibility mapping and service-coverage dashboard for health facilities.","href":"assets/img/portfolio/portfolio-2.jpg"},
+            {"img":"assets/img/portfolio/portfolio-9.jpg","title":"COVID-19 Dashboard, Sudan","desc":"Epidemiological surveillance dashboard tracking cases, 2020–2021.","href":"assets/img/portfolio/portfolio-9.jpg"},
+            {"img":"assets/img/portfolio/portfolio-5.jpg","title":"Health Cluster 4Ws Indicators","desc":"WHO indicator dashboard summarizing partner health interventions.","href":"assets/img/portfolio/portfolio-5.jpg"}
+          ]'>
+            <div class="mw-stage">
+              <div class="mw-glow-top" aria-hidden="true"></div>
+              <div class="mw-glow-bottom" aria-hidden="true"></div>
+            </div>
+            <div class="mw-controls">
+              <div class="mw-dots"></div>
+              <span class="mw-open-link-wrap" style="display:none;">
+                <a class="mw-open-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open full image">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </span>
+            </div>
           </div>
+          <div class="mw-hint">Drag the front card, or use ← →</div>
         </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html"></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
       </div>
-    </section><!-- End Portfolio Section -->
+    </section><!-- End Map Work Showcase -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -357,7 +271,7 @@
         <div class="section-title">
           <h2>Services</h2>
           <p>
-            I'm Provide map service that makes maps, features, and attribute data available inside many types of client applications and can I expose different levels of capabilities.</p>
+            GIS services that turn maps, features and attribute data into tools client applications can use, at the level of detail each project needs.</p>
         </div>
 
         <div class="row">
@@ -445,88 +359,71 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
+    <!-- ======= References Section ======= -->
+    <section id="testimonials" class="testimonials">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
           <h2>REFERENCES</h2>
         </div>
 
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Dr. Naeema AL GASSEER</h3>
-                <h4>WR WHO Egypt </h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Dr Naeema Al-Gasseer (Bahrain) has been assigned to the position of WHO Representative in Egypt, effective 4 August 2020. She was formerly Senior Adviser, Office of the Regional Director, and WHO Representative in Sudan.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
+        <div class="rm-wrap">
+          <button class="rm-arrow rm-arrow-prev" aria-label="Scroll references left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="rm-viewport">
+            <div class="rm-track">
+              <div class="rm-card">
+                <img src="assets/img/testimonials/testimonials-1.jpg" alt="Dr. Naeema AL GASSEER">
+                <div class="rm-card-caption">
+                  <p class="rm-card-name">Dr. Naeema AL GASSEER</p>
+                  <p class="rm-card-role">WR WHO Egypt</p>
+                </div>
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Hassan El Bushra</h3>
-                <h4>Representative of the WHO Director General and the WHO/EMRO Regional Director</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  supporting the country in reaching its national health goals and contributing to global and regional public health action, and to draw on the experience of the country in building a body of public health knowledge that can benefit the rest of the world. .
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
+              <div class="rm-card">
+                <img src="assets/img/testimonials/testimonials-2.jpg" alt="Hassan El Bushra">
+                <div class="rm-card-caption">
+                  <p class="rm-card-name">Hassan El Bushra</p>
+                  <p class="rm-card-role">Representative of the WHO Director General &amp; WHO/EMRO Regional Director</p>
+                </div>
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Abdalla Mohammed Abdalla</h3>
-                <h4>Epidemiologist , Emerging Disease Surveillance and Response</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                   Director of Response Directorate - Health Emergency and Epidemics Control Directorate 
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
+              <div class="rm-card">
+                <img src="assets/img/testimonials/testimonials-3.jpg" alt="Abdalla Mohammed Abdalla">
+                <div class="rm-card-caption">
+                  <p class="rm-card-name">Abdalla Mohammed Abdalla</p>
+                  <p class="rm-card-role">Epidemiologist, Emerging Disease Surveillance &amp; Response</p>
+                </div>
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Eltaib Saeed Mohamed Ganawa</h3>
-                <h4>Dean Faculty of Geographical and Environmental Sciences, University of Khartoum</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Eltaib Saeed Mohamed Ganawa. Dean Faculty of Geographical and Environmental Sciences, University of Khartoum. He have more than 23 years of experience in practices and teaching GIS, GPS, and remote sensing application and projects in various kinds of soil management.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
+              <div class="rm-card">
+                <img src="assets/img/testimonials/testimonials-4.jpg" alt="Eltaib Saeed Mohamed Ganawa">
+                <div class="rm-card-caption">
+                  <p class="rm-card-name">Eltaib Saeed Mohamed Ganawa</p>
+                  <p class="rm-card-role">Dean, Faculty of Geographical &amp; Environmental Sciences, U. of Khartoum</p>
+                </div>
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>Nasser Al Choumari</h3>
-                <h4>Manager of Global Surveing Projects</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Al Chcoumari as its Managing Director. Having 18 years of experience in the field, Global Surveying Projects plays an important role in the field of Survey, as the United Arab Emirates' cities and towns are rapidly developing day by day, almost all of the projects are involved in survey services.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
+              <div class="rm-card">
+                <img src="assets/img/testimonials/testimonials-5.jpg" alt="Nasser Al Choumari">
+                <div class="rm-card-caption">
+                  <p class="rm-card-name">Nasser Al Choumari</p>
+                  <p class="rm-card-role">Manager, Global Surveying Projects</p>
+                </div>
               </div>
-            </div><!-- End testimonial item -->
-
+              <div class="rm-card">
+                <img src="assets/img/testimonials/testimonials-6.jpg" alt="Hassan Halawy">
+                <div class="rm-card-caption">
+                  <p class="rm-card-name">Hassan Halawy</p>
+                  <p class="rm-card-role">Group CEO, EAG</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="swiper-pagination"></div>
+          <button class="rm-arrow rm-arrow-next" aria-label="Scroll references right">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section><!-- End References Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
@@ -637,6 +534,9 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/map-showcase.js"></script>
+  <script src="assets/js/cursor-fx.js"></script>
+  <script src="assets/js/references-marquee.js"></script>
 
 </body>
 

@@ -1,0 +1,333 @@
+/* ==========================================================
+   Minimalist Hero — adapted from the "minimalist-hero" React
+   component, rebuilt in plain HTML/CSS/JS for MOHAMED ALKAMEL's
+   MyResume (BootstrapMade) template. Drop-in replacement for the
+   default #hero section.
+   ========================================================== */
+
+.mh-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  background: #fbfaf8;
+  padding: 32px 24px;
+  font-family: "Poppins", sans-serif;
+}
+
+@media (min-width: 768px) {
+  .mh-hero {
+    padding: 48px 56px;
+  }
+}
+
+/* ---------- Header ---------- */
+.mh-hero .mh-header {
+  z-index: 30;
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mh-hero .mh-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #1c1c1c;
+  opacity: 0;
+  animation: mhFadeInLeft 0.5s ease forwards;
+}
+
+.mh-hero .mh-nav {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-nav {
+    display: flex;
+  }
+}
+
+.mh-hero .mh-nav a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(28, 28, 28, 0.6);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mh-hero .mh-nav a:hover {
+  color: #0563bb;
+}
+
+.mh-hero .mh-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  animation: mhFadeInRight 0.5s ease forwards;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-burger {
+    display: none;
+  }
+}
+
+.mh-hero .mh-burger span {
+  display: block;
+  height: 2px;
+  width: 24px;
+  background: #1c1c1c;
+}
+
+.mh-hero .mh-burger span:last-child {
+  width: 18px;
+}
+
+/* ---------- Main content grid ---------- */
+.mh-hero .mh-main {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 24px;
+  padding-top: 32px;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.mh-hero .mh-text-left {
+  z-index: 20;
+  order: 2;
+  text-align: center;
+  opacity: 0;
+  animation: mhFadeInUp 0.6s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-text-left {
+    order: 1;
+    text-align: left;
+  }
+}
+
+.mh-hero .mh-text-left p {
+  max-width: 320px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(28, 28, 28, 0.8);
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-text-left p {
+    margin: 0;
+  }
+}
+
+.mh-hero .mh-text-left a {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1c1c1c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mh-hero .mh-image-wrap {
+  position: relative;
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-image-wrap {
+    order: 2;
+  }
+}
+
+.mh-hero .mh-circle {
+  position: absolute;
+  z-index: 0;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  background: rgba(226, 169, 72, 0.85);
+  opacity: 0;
+  transform: scale(0.8);
+  animation: mhScaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-circle {
+    height: 380px;
+    width: 380px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mh-hero .mh-circle {
+    height: 440px;
+    width: 440px;
+  }
+}
+
+.mh-hero .mh-photo {
+  position: relative;
+  z-index: 10;
+  width: 168px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  filter: drop-shadow(0 18px 28px rgba(28, 28, 28, 0.25));
+  opacity: 0;
+  animation: mhPhotoIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.4s;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-photo {
+    width: 192px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mh-hero .mh-photo {
+    width: 216px;
+  }
+}
+
+.mh-hero .mh-text-right {
+  z-index: 20;
+  order: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  animation: mhFadeInUp 0.6s ease forwards;
+  animation-delay: 0.6s;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-text-right {
+    justify-content: flex-start;
+    text-align: center;
+  }
+}
+
+.mh-hero .mh-text-right h1 {
+  margin: 0;
+  font-weight: 800;
+  color: #1c1c1c;
+  line-height: 0.95;
+  font-size: 56px;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-text-right h1 {
+    font-size: 84px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mh-hero .mh-text-right h1 {
+    font-size: 108px;
+  }
+}
+
+.mh-hero .mh-text-right .mh-role {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: #0563bb;
+  margin-bottom: 10px;
+}
+
+/* ---------- Footer ---------- */
+.mh-hero .mh-footer {
+  z-index: 30;
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  animation: mhFadeInUp 0.5s ease forwards;
+  animation-delay: 0.65s;
+}
+
+.mh-hero .mh-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mh-hero .mh-social a {
+  color: rgba(28, 28, 28, 0.6);
+  font-size: 20px;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.mh-hero .mh-social a:hover {
+  color: #0563bb;
+}
+
+.mh-hero .mh-location {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(28, 28, 28, 0.8);
+}
+
+/* ---------- Animations ---------- */
+@keyframes mhFadeInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes mhFadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes mhFadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes mhScaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes mhPhotoIn {
+  from { opacity: 0; transform: translateY(50px) scale(1.22); }
+  to   { opacity: 1; transform: translateY(0) scale(1.22); }
+}
