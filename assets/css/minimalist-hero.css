@@ -107,7 +107,6 @@
   grid-template-columns: 1fr;
   align-items: center;
   gap: 24px;
-  padding-top: 32px;
 }
 
 @media (min-width: 768px) {
