@@ -35,7 +35,20 @@
     }
   });
 
-  document.addEventListener("mouseleave", function () {
+  // "document mouseleave" is unreliable for detecting "the pointer
+  // left the window" — it can fire spuriously while the mouse is
+  // still over the page (e.g. moving quickly over transformed /
+  // perspective elements like the card stacks), which was hiding
+  // the custom cursor at random points. Checking relatedTarget on
+  // mouseout is the robust way to tell a genuine window-leave from
+  // an ordinary move between elements.
+  document.addEventListener("mouseout", function (e) {
+    if (!e.relatedTarget && !e.toElement) {
+      document.documentElement.classList.add("cfx-hidden");
+    }
+  });
+
+  window.addEventListener("blur", function () {
     document.documentElement.classList.add("cfx-hidden");
   });
 

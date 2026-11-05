@@ -90,8 +90,15 @@ a:hover { color: #0a7ad6; }
   font-family: "Poppins", sans-serif;
 }
 
+/* About's intro line runs longer than the others, so keep it a
+   touch smaller than the shared section-title size. */
+#about .section-title p {
+  font-size: 26px;
+}
+
 @media (min-width: 768px) {
   .section-title p { font-size: 40px; }
+  #about .section-title p { font-size: 32px; }
 }
 
 /* Sections stay transparent so the fixed contour texture on
