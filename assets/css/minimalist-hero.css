@@ -146,6 +146,43 @@
   }
 }
 
+/* Rotating role/title line — crossfades between a few short
+   titles instead of one static sentence. Fixed min-height keeps
+   the rest of the hero from shifting as the text length changes. */
+.mh-hero .mh-rotator-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-rotator-wrap {
+    justify-content: flex-start;
+  }
+}
+
+.mh-hero .mh-rotator-text {
+  display: inline-block;
+  color: var(--mh-accent, #0563bb);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.mh-hero .mh-rotator-text.mh-rotator-hidden {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-hero .mh-rotator-text {
+    transition: none;
+  }
+}
+
 .mh-hero .mh-text-left a {
   display: inline-block;
   margin-top: 16px;
