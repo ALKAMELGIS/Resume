@@ -247,10 +247,36 @@
 .mh-hero .mh-text-right h1 {
   margin: 0;
   font-weight: 800;
-  color: #1c1c1c;
   line-height: 0.95;
   font-size: 56px;
   letter-spacing: -0.01em;
+}
+
+/* Name — bold, with a slow, restrained light-sweep across the
+   type for a "premium" animated feel without being distracting. */
+.mh-hero .mh-text-right .mh-name {
+  display: inline-block;
+  background-image: linear-gradient(100deg, #1c1c1c 42%, var(--mh-amber, #e2a948) 50%, #1c1c1c 58%);
+  background-size: 300% 100%;
+  background-position: 180% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: mhNameShine 7s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+@keyframes mhNameShine {
+  0% { background-position: 180% 0; }
+  22% { background-position: -80% 0; }
+  100% { background-position: -80% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-hero .mh-text-right .mh-name {
+    animation: none;
+    background-position: -80% 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -267,11 +293,19 @@
 
 .mh-hero .mh-text-right .mh-role {
   display: block;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.16em;
   color: #0563bb;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-text-right .mh-role {
+    font-size: 15px;
+    letter-spacing: 0.2em;
+  }
 }
 
 /* ---------- Footer ---------- */
