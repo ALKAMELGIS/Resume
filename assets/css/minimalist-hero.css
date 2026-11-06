@@ -142,7 +142,9 @@
    hover (each letter lifts, staggered left to right). */
 .mh-hero .mh-text-left h1 {
   margin: 0 0 18px;
-  font-weight: 800;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 600;
   line-height: 0.95;
   font-size: 44px;
   letter-spacing: -0.01em;
@@ -204,8 +206,10 @@
   align-items: center;
   justify-content: center;
   min-height: 48px;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 @media (min-width: 768px) {
