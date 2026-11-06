@@ -424,10 +424,10 @@
   .mh-hero .mh-image-wrap {
     position: absolute;
     right: 0;
-    bottom: -70px;
+    bottom: -100px;
     top: auto;
     left: auto;
-    height: 82%;
+    height: 90%;
     width: auto;
     display: flex;
     align-items: flex-end;
@@ -440,11 +440,12 @@
     height: 100% !important;
     width: auto !important;
     max-width: none;
+    filter: none;
     animation-name: mhPhotoInBig;
   }
 
   .mh-hero .mh-circle {
-    height: 122%;
+    height: 132%;
     width: auto;
     aspect-ratio: 1 / 1;
   }
