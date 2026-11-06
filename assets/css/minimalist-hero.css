@@ -142,14 +142,21 @@
 
 /* Name — now the top element of the left column. Solid matte
    black, split into per-letter spans so it reacts a little on
-   hover (each letter lifts, staggered left to right). */
-.mh-hero .mh-text-left h1 {
+   hover (each letter lifts, staggered left to right).
+   Selector is prefixed with #hero (specificity 1-0-0) to beat the
+   legacy #hero h1 rule in style.css, which otherwise silently wins
+   the cascade over a plain .mh-hero h1 selector and was forcing a
+   fixed 64px everywhere regardless of what we set here. */
+#hero.mh-hero .mh-text-left h1 {
   margin: 0 0 18px;
   font-family: "Playfair Display", serif;
   font-style: normal;
   font-weight: 600;
   line-height: 0.95;
-  font-size: 38px;
+  /* Fluid size instead of hard breakpoint jumps: scales smoothly
+     from phone to large desktop and stays small enough to never
+     run into the portrait/circle on the right. */
+  font-size: clamp(26px, 4vw + 10px, 56px);
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
@@ -176,47 +183,25 @@
   }
 }
 
-@media (min-width: 768px) {
-  .mh-hero .mh-text-left h1 {
-    font-size: 60px;
-  }
-}
-
-@media (min-width: 992px) {
-  .mh-hero .mh-text-left h1 {
-    white-space: normal;
-  }
-}
-
-@media (min-width: 1200px) {
-  .mh-hero .mh-text-left h1 {
-    font-size: 72px;
-  }
-}
-
-.mh-hero .mh-text-left p {
-  max-width: 320px;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.7;
-  color: rgba(28, 28, 28, 0.8);
-}
-
 /* Rotating role/title line — crossfades between a few short
    titles instead of one static sentence. Fixed min-height keeps
-   the rest of the hero from shifting as the text length changes. */
-.mh-hero .mh-rotator-wrap {
+   the rest of the hero from shifting as the text length changes.
+   Also #hero-prefixed: it's a <p>, and the legacy #hero p rule
+   (Poppins, 26px, gray) otherwise wins over a plain-class selector
+   and silently overrides our font entirely. */
+#hero.mh-hero .mh-rotator-wrap {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   min-height: 48px;
+  margin: 0;
   font-family: "Playfair Display", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 19px;
 }
 
-.mh-hero .mh-rotator-text {
+#hero.mh-hero .mh-rotator-text {
   display: inline-block;
   color: var(--mh-accent, #0563bb);
   opacity: 1;
