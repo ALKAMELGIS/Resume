@@ -127,16 +127,11 @@
 .mh-hero .mh-text-left {
   z-index: 20;
   order: 1;
-  text-align: center;
+  text-align: left;
   opacity: 0;
+  margin-top: 20px;
   animation: mhFadeInUp 0.6s ease forwards;
   animation-delay: 0.5s;
-}
-
-@media (min-width: 768px) {
-  .mh-hero .mh-text-left {
-    text-align: left;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -154,7 +149,7 @@
   font-style: italic;
   font-weight: 600;
   line-height: 0.95;
-  font-size: 44px;
+  font-size: 54px;
   letter-spacing: -0.01em;
 }
 
@@ -194,16 +189,10 @@
 
 .mh-hero .mh-text-left p {
   max-width: 320px;
-  margin: 0 auto;
+  margin: 0;
   font-size: 14px;
   line-height: 1.7;
   color: rgba(28, 28, 28, 0.8);
-}
-
-@media (min-width: 768px) {
-  .mh-hero .mh-text-left p {
-    margin: 0;
-  }
 }
 
 /* Rotating role/title line — crossfades between a few short
@@ -212,18 +201,12 @@
 .mh-hero .mh-rotator-wrap {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 48px;
   font-family: "Playfair Display", serif;
   font-style: italic;
   font-weight: 600;
-  font-size: 17px;
-}
-
-@media (min-width: 768px) {
-  .mh-hero .mh-rotator-wrap {
-    justify-content: flex-start;
-  }
+  font-size: 19px;
 }
 
 .mh-hero .mh-rotator-text {
