@@ -112,13 +112,19 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-main {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .mh-hero .mh-main {
+    grid-template-columns: 1fr;
   }
 }
 
 .mh-hero .mh-text-left {
   z-index: 20;
-  order: 2;
+  order: 1;
   text-align: center;
   opacity: 0;
   animation: mhFadeInUp 0.6s ease forwards;
@@ -127,8 +133,52 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-text-left {
-    order: 1;
     text-align: left;
+  }
+}
+
+/* Name — now the top element of the left column. Solid matte
+   black, split into per-letter spans so it reacts a little on
+   hover (each letter lifts, staggered left to right). */
+.mh-hero .mh-text-left h1 {
+  margin: 0 0 18px;
+  font-weight: 800;
+  line-height: 0.95;
+  font-size: 44px;
+  letter-spacing: -0.01em;
+}
+
+.mh-hero .mh-text-left .mh-name {
+  display: inline-block;
+  color: #1c1c1c;
+}
+
+.mh-hero .mh-text-left .mh-letter {
+  display: inline-block;
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 25ms);
+}
+
+.mh-hero .mh-text-left .mh-name:hover .mh-letter {
+  transform: translateY(-0.12em);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-hero .mh-text-left .mh-letter {
+    transition: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-text-left h1 {
+    font-size: 60px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mh-hero .mh-text-left h1 {
+    font-size: 72px;
   }
 }
 
@@ -195,7 +245,7 @@
 
 .mh-hero .mh-image-wrap {
   position: relative;
-  order: 1;
+  order: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,60 +254,7 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-image-wrap {
-    order: 3;
     justify-content: flex-end;
-  }
-}
-
-
-.mh-hero .mh-circle {
-  position: absolute;
-  z-index: 0;
-  height: 320px;
-  width: 320px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: rgba(226, 169, 72, 0.85);
-  opacity: 0;
-  transform: scale(0.8);
-  animation: mhScaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 0.2s;
-}
-
-/* Thin, faint, slowly-rotating topographic contour lines inside
-   the circle — a professional "map" texture, not a flat fill. */
-.mh-hero .mh-circle::before {
-  content: "";
-  position: absolute;
-  inset: -10%;
-  background-image: url("../img/circle-contour.svg");
-  background-size: cover;
-  background-position: center;
-  animation: mhCircleRotate 50s linear infinite;
-}
-
-@keyframes mhCircleRotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mh-hero .mh-circle::before {
-    animation: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .mh-hero .mh-circle {
-    height: 410px;
-    width: 410px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .mh-hero .mh-circle {
-    height: 480px;
-    width: 480px;
   }
 }
 
@@ -285,88 +282,6 @@
 @media (min-width: 1200px) {
   .mh-hero .mh-photo {
     width: 236px;
-  }
-}
-
-.mh-hero .mh-text-right {
-  z-index: 20;
-  order: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  opacity: 0;
-  animation: mhFadeInUp 0.6s ease forwards;
-  animation-delay: 0.6s;
-}
-
-@media (min-width: 768px) {
-  .mh-hero .mh-text-right {
-    order: 2;
-    justify-content: flex-start;
-    text-align: center;
-  }
-}
-
-.mh-hero .mh-text-right h1 {
-  margin: 0;
-  font-weight: 800;
-  line-height: 0.95;
-  font-size: 56px;
-  letter-spacing: -0.01em;
-}
-
-/* Name — solid matte black, split into per-letter spans so it
-   reacts a little on hover (each letter lifts, staggered left to
-   right) instead of changing color. */
-.mh-hero .mh-text-right .mh-name {
-  display: inline-block;
-  color: #1c1c1c;
-}
-
-.mh-hero .mh-text-right .mh-letter {
-  display: inline-block;
-  transform: translateY(0);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: calc(var(--i, 0) * 25ms);
-}
-
-.mh-hero .mh-text-right .mh-name:hover .mh-letter {
-  transform: translateY(-0.12em);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mh-hero .mh-text-right .mh-letter {
-    transition: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .mh-hero .mh-text-right h1 {
-    font-size: 84px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .mh-hero .mh-text-right h1 {
-    font-size: 108px;
-  }
-}
-
-.mh-hero .mh-text-right .mh-role {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: #0563bb;
-  margin-top: 14px;
-  white-space: nowrap;
-}
-
-@media (min-width: 768px) {
-  .mh-hero .mh-text-right .mh-role {
-    font-size: 15px;
-    letter-spacing: 0.2em;
   }
 }
 
@@ -440,10 +355,6 @@
    Placed at the end of the file so it wins the cascade over the
    earlier fixed-size breakpoint rules above. */
 @media (min-width: 992px) {
-  .mh-hero .mh-main {
-    grid-template-columns: 1.05fr 1fr;
-  }
-
   .mh-hero .mh-image-wrap {
     position: absolute;
     right: 0;
@@ -458,15 +369,6 @@
     z-index: 15;
   }
 
-  .mh-hero .mh-circle {
-    right: 0;
-    bottom: 6%;
-    height: 68%;
-    width: 68%;
-    max-width: 560px;
-    max-height: 560px;
-  }
-
   .mh-hero .mh-photo {
     position: relative;
     height: 100% !important;
@@ -475,11 +377,9 @@
     animation-name: mhPhotoInBig;
   }
 
-  /* Keep the name legible where it passes in front of the dark
-     suit in the big portrait — a soft light halo instead of a
-     hard box, so it still reads crisp black on the plain bg. */
-  .mh-hero .mh-text-right h1,
-  .mh-hero .mh-text-right .mh-role {
+  /* Keep the name legible on the off-chance it ever passes in
+     front of the portrait at narrower large-screen widths. */
+  .mh-hero .mh-text-left h1 {
     text-shadow: 0 0 1px #fbfaf8, 0 0 14px #fbfaf8, 0 0 28px #fbfaf8;
   }
 }
