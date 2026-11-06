@@ -127,18 +127,27 @@
 .mh-hero .mh-text-left {
   z-index: 20;
   order: 1;
-  width: fit-content;
-  max-width: 100%;
+  width: 100%;
   text-align: center;
   opacity: 0;
-  margin-top: 20px;
+  margin-top: 72px;
   animation: mhFadeInUp 0.6s ease forwards;
   animation-delay: 0.5s;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .mh-hero .mh-text-left {
-    margin-top: 36px;
+    margin-top: 90px;
+  }
+}
+
+/* Desktop only: shrink-wrap the block so the role/Read More line
+   center under the name's own width instead of the full column. */
+@media (min-width: 992px) {
+  .mh-hero .mh-text-left {
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 20px;
   }
 }
 
