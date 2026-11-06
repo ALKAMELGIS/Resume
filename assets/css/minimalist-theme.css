@@ -382,42 +382,50 @@ section { background: transparent !important; }
   background: var(--mh-accent);
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer ----------
+   Light, clean multi-column layout on the same background as the
+   rest of the site, instead of a dark band — a thin top rule
+   separates it from the page above, matching the quieter reference
+   layout (muted gray body copy, outlined circular social icons). */
 #footer {
-  background: var(--mh-ink);
-  color: rgba(251, 250, 248, 0.75);
+  background: var(--mh-bg);
+  color: var(--mh-ink-soft);
 }
 
 #footer h3 {
-  color: var(--mh-bg);
+  color: var(--mh-ink);
 }
 
 #footer .social-links a {
-  background: rgba(251, 250, 248, 0.08);
-  color: var(--mh-bg);
+  background: var(--mh-bg);
+  color: var(--mh-ink);
+  border: 1px solid rgba(28, 28, 28, 0.15);
 }
 
 #footer .social-links a:hover {
   background: var(--mh-accent);
+  color: var(--mh-bg);
+  border-color: var(--mh-accent);
 }
 
 #footer .copyright,
 #footer .credits {
-  color: rgba(251, 250, 248, 0.55);
+  color: var(--mh-ink-soft);
 }
 
 /* Redesigned multi-column footer */
 .mf-footer {
-  padding: 70px 0 0;
+  padding: 56px 0 0;
   text-align: left;
+  border-top: 1px solid rgba(28, 28, 28, 0.1);
 }
 
 .mf-footer .mf-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
   gap: 40px;
-  padding-bottom: 50px;
-  border-bottom: 1px solid rgba(251, 250, 248, 0.12);
+  padding-bottom: 42px;
+  border-bottom: 1px solid rgba(28, 28, 28, 0.1);
   text-align: left;
 }
 
@@ -443,7 +451,7 @@ section { background: transparent !important; }
   font-weight: 800;
   letter-spacing: 0.02em;
   margin-bottom: 12px;
-  color: var(--mh-bg);
+  color: var(--mh-ink);
 }
 
 .mf-footer .mf-col h4 {
@@ -451,14 +459,14 @@ section { background: transparent !important; }
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--mh-bg);
+  color: var(--mh-ink);
   margin-bottom: 18px;
 }
 
 .mf-footer .mf-brand p {
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(251, 250, 248, 0.6);
+  color: var(--mh-ink-soft);
   margin-bottom: 20px;
   max-width: 320px;
 }
@@ -479,13 +487,13 @@ section { background: transparent !important; }
 }
 
 .mf-footer .mf-links a {
-  color: rgba(251, 250, 248, 0.6);
+  color: var(--mh-ink-soft);
   font-size: 14px;
   transition: color 0.25s, padding-left 0.25s;
 }
 
 .mf-footer .mf-links a:hover {
-  color: var(--mh-amber);
+  color: var(--mh-accent);
   padding-left: 4px;
   text-decoration: none;
 }
@@ -496,7 +504,7 @@ section { background: transparent !important; }
   gap: 10px;
   margin-bottom: 14px;
   font-size: 14px;
-  color: rgba(251, 250, 248, 0.6);
+  color: var(--mh-ink-soft);
 }
 
 .mf-footer .mf-contact i {
@@ -507,13 +515,13 @@ section { background: transparent !important; }
 }
 
 .mf-footer .mf-contact a {
-  color: rgba(251, 250, 248, 0.6);
+  color: var(--mh-ink-soft);
   transition: color 0.25s;
   word-break: break-word;
 }
 
 .mf-footer .mf-contact a:hover {
-  color: var(--mh-amber);
+  color: var(--mh-accent);
   text-decoration: none;
 }
 
@@ -523,9 +531,9 @@ section { background: transparent !important; }
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 22px 0;
+  padding: 20px 0;
   font-size: 13px;
-  color: rgba(251, 250, 248, 0.45);
+  color: rgba(28, 28, 28, 0.45);
 }
 
 .mf-footer .mf-bottom p {
@@ -533,7 +541,7 @@ section { background: transparent !important; }
 }
 
 .mf-footer .mf-bottom strong {
-  color: rgba(251, 250, 248, 0.7);
+  color: var(--mh-ink-soft);
 }
 
 @media (max-width: 575px) {
