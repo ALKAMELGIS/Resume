@@ -396,17 +396,20 @@
    Placed at the end of the file so it wins the cascade over the
    earlier fixed-size breakpoint rules above. */
 @media (min-width: 992px) {
+  /* Mirrored layout: the portrait anchors to the LEFT edge now,
+     and the text column reads from the right instead — flipped
+     from the original right-anchored version per request. */
   .mh-hero .mh-image-wrap {
     position: absolute;
-    right: 0;
+    left: 0;
+    right: auto;
     bottom: -100px;
     top: auto;
-    left: auto;
     height: 90%;
     width: auto;
     display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: flex-start;
     z-index: 15;
   }
 
@@ -423,6 +426,14 @@
     height: 132%;
     width: auto;
     aspect-ratio: 1 / 1;
+  }
+
+  .mh-hero .mh-text-left {
+    text-align: right;
+  }
+
+  #hero.mh-hero .mh-rotator-wrap {
+    justify-content: flex-end;
   }
 
   /* Keep the name legible on the off-chance it ever passes in
