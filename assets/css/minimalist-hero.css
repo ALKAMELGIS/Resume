@@ -264,7 +264,7 @@
   height: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .mh-hero .mh-image-wrap {
     justify-content: flex-end;
   }
@@ -280,8 +280,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  height: 320px;
-  width: 320px;
+  height: 345px;
+  width: 345px;
   border-radius: 50%;
   overflow: hidden;
   background: rgba(212, 166, 97, 0.72);
@@ -318,15 +318,15 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-circle {
-    height: 380px;
-    width: 380px;
+    height: 410px;
+    width: 410px;
   }
 }
 
 .mh-hero .mh-photo {
   position: relative;
   z-index: 10;
-  width: 204px;
+  width: 222px;
   height: auto;
   object-fit: contain;
   border-radius: 0;
@@ -340,7 +340,7 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-photo {
-    width: 246px;
+    width: 266px;
   }
 }
 
