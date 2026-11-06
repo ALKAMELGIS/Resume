@@ -148,6 +148,16 @@ section { background: transparent !important; }
 }
 
 /* ---------- Resume ---------- */
+.resume .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.resume .row > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
 .resume .resume-title {
   color: var(--mh-ink);
   font-weight: 700;
@@ -160,11 +170,23 @@ section { background: transparent !important; }
   border-left-color: #e7e3da;
   padding: 0 0 25px 25px;
   margin-top: 25px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.resume .resume-item:hover {
+  border-left-color: var(--mh-amber);
+  transform: translateX(4px);
 }
 
 .resume .resume-item::before {
   background: var(--mh-bg);
   border-color: var(--mh-amber);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.resume .resume-item:hover::before {
+  background: var(--mh-amber);
+  transform: scale(1.25);
 }
 
 .resume .resume-item h4 {
@@ -177,6 +199,43 @@ section { background: transparent !important; }
   color: var(--mh-ink-soft);
   padding: 4px 14px;
   border-radius: 999px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.resume .resume-item:hover h5 {
+  background: var(--mh-accent-soft);
+  color: var(--mh-accent);
+}
+
+/* Core Expertise skill chips — fill the Education column and give it
+   its own light interactivity (hover lift + color pop). */
+.res-skill-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.res-skill-tag {
+  display: inline-block;
+  background: var(--mh-bg-alt);
+  color: var(--mh-ink);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid #e7e3da;
+  cursor: default;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+}
+
+.res-skill-tag:hover {
+  background: var(--mh-amber);
+  border-color: var(--mh-amber);
+  color: #1c1c1c;
+  transform: translateY(-3px);
 }
 
 /* ---------- Portfolio ---------- */
@@ -232,6 +291,39 @@ section { background: transparent !important; }
 .services .iconbox-yellow i,
 .services .iconbox-pink i {
   color: var(--mh-ink) !important;
+}
+
+/* Interactive icons — scale, rotate slightly and pop to the accent
+   color on hover, with the background blob spinning gently. */
+.services .icon-box .icon {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.services .icon-box .icon svg {
+  transition: transform 0.6s ease;
+}
+
+.services .icon-box .icon i {
+  transition: color 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.services .icon-box:hover .icon {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.services .icon-box:hover .icon svg {
+  transform: rotate(18deg);
+}
+
+.services .icon-box:hover .icon i {
+  color: var(--mh-accent) !important;
+  transform: scale(1.1);
+}
+
+.services .icon-box:focus-within .icon,
+.services .icon-box:active .icon {
+  transform: scale(1.12) rotate(-6deg);
 }
 
 /* ---------- Testimonials ---------- */
@@ -312,4 +404,141 @@ section { background: transparent !important; }
 #footer .copyright,
 #footer .credits {
   color: rgba(251, 250, 248, 0.55);
+}
+
+/* Redesigned multi-column footer */
+.mf-footer {
+  padding: 70px 0 0;
+  text-align: left;
+}
+
+.mf-footer .mf-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(251, 250, 248, 0.12);
+  text-align: left;
+}
+
+.mf-footer .mf-col {
+  text-align: left;
+}
+
+@media (max-width: 991px) {
+  .mf-footer .mf-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 36px;
+  }
+}
+
+@media (max-width: 575px) {
+  .mf-footer .mf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mf-footer .mf-col h3 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+  color: var(--mh-bg);
+}
+
+.mf-footer .mf-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mh-bg);
+  margin-bottom: 18px;
+}
+
+.mf-footer .mf-brand p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(251, 250, 248, 0.6);
+  margin-bottom: 20px;
+  max-width: 320px;
+}
+
+.mf-footer .mf-brand .social-links {
+  margin: 0;
+}
+
+.mf-footer .mf-links,
+.mf-footer .mf-contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mf-footer .mf-links li {
+  margin-bottom: 12px;
+}
+
+.mf-footer .mf-links a {
+  color: rgba(251, 250, 248, 0.6);
+  font-size: 14px;
+  transition: color 0.25s, padding-left 0.25s;
+}
+
+.mf-footer .mf-links a:hover {
+  color: var(--mh-amber);
+  padding-left: 4px;
+  text-decoration: none;
+}
+
+.mf-footer .mf-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: rgba(251, 250, 248, 0.6);
+}
+
+.mf-footer .mf-contact i {
+  color: var(--mh-amber);
+  font-size: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.mf-footer .mf-contact a {
+  color: rgba(251, 250, 248, 0.6);
+  transition: color 0.25s;
+  word-break: break-word;
+}
+
+.mf-footer .mf-contact a:hover {
+  color: var(--mh-amber);
+  text-decoration: none;
+}
+
+.mf-footer .mf-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 22px 0;
+  font-size: 13px;
+  color: rgba(251, 250, 248, 0.45);
+}
+
+.mf-footer .mf-bottom p {
+  margin: 0;
+}
+
+.mf-footer .mf-bottom strong {
+  color: rgba(251, 250, 248, 0.7);
+}
+
+@media (max-width: 575px) {
+  .mf-footer .mf-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
 }
