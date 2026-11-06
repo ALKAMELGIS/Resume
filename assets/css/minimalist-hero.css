@@ -127,7 +127,7 @@
 .mh-hero .mh-text-left {
   z-index: 20;
   order: 1;
-  text-align: center;
+  text-align: left;
   opacity: 0;
   margin-top: 20px;
   animation: mhFadeInUp 0.6s ease forwards;
@@ -148,7 +148,7 @@
    the cascade over a plain .mh-hero h1 selector and was forcing a
    fixed 64px everywhere regardless of what we set here. */
 #hero.mh-hero .mh-text-left h1 {
-  margin: 0 0 18px;
+  margin: 0 0 6px;
   font-family: "Playfair Display", serif;
   font-style: normal;
   font-weight: 600;
@@ -192,8 +192,8 @@
 #hero.mh-hero .mh-rotator-wrap {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 48px;
+  justify-content: flex-start;
+  min-height: 28px;
   margin: 0;
   font-family: "Playfair Display", serif;
   font-style: normal;
@@ -222,7 +222,7 @@
 
 .mh-hero .mh-text-left a {
   display: inline-block;
-  margin-top: 16px;
+  margin-top: 8px;
   font-size: 13px;
   font-weight: 600;
   color: #1c1c1c;
