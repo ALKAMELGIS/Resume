@@ -359,7 +359,7 @@
   .mh-hero .mh-image-wrap {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: -70px;
     top: auto;
     left: auto;
     height: 82%;
