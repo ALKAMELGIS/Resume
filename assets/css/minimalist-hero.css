@@ -209,6 +209,7 @@
   }
 }
 
+
 .mh-hero .mh-circle {
   position: absolute;
   z-index: 0;
@@ -425,4 +426,60 @@
 @keyframes mhPhotoIn {
   from { opacity: 0; transform: translateY(50px) scale(1.22); }
   to   { opacity: 1; transform: translateY(0) scale(1.22); }
+}
+@keyframes mhPhotoInBig {
+  from { opacity: 0; transform: translateY(50px) scale(1); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Large screens: big corner-to-corner portrait ----------
+   The photo becomes a full-height statement piece anchored to the
+   bottom-right corner of the hero, reaching up toward the top of
+   the section; the circle is resized/repositioned to sit snugly
+   behind it instead of floating as a small independent badge.
+   Placed at the end of the file so it wins the cascade over the
+   earlier fixed-size breakpoint rules above. */
+@media (min-width: 992px) {
+  .mh-hero .mh-main {
+    grid-template-columns: 1.05fr 1fr;
+  }
+
+  .mh-hero .mh-image-wrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    left: auto;
+    height: 82%;
+    width: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    z-index: 15;
+  }
+
+  .mh-hero .mh-circle {
+    right: 0;
+    bottom: 6%;
+    height: 68%;
+    width: 68%;
+    max-width: 560px;
+    max-height: 560px;
+  }
+
+  .mh-hero .mh-photo {
+    position: relative;
+    height: 100% !important;
+    width: auto !important;
+    max-width: none;
+    animation-name: mhPhotoInBig;
+  }
+
+  /* Keep the name legible where it passes in front of the dark
+     suit in the big portrait — a soft light halo instead of a
+     hard box, so it still reads crisp black on the plain bg. */
+  .mh-hero .mh-text-right h1,
+  .mh-hero .mh-text-right .mh-role {
+    text-shadow: 0 0 1px #fbfaf8, 0 0 14px #fbfaf8, 0 0 28px #fbfaf8;
+  }
 }
