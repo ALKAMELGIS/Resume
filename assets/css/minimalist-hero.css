@@ -258,6 +258,59 @@
   }
 }
 
+/* Amber circle, centered behind the photo and larger than it on
+   every side — a deliberate halo rather than a tucked-away badge.
+   Filled with a slow-rotating, thin topographic contour texture
+   for a refined, map-literate accent instead of a flat fill. */
+.mh-hero .mh-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  height: 290px;
+  width: 290px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(226, 169, 72, 0.9);
+  opacity: 0;
+  animation: mhCircleFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+.mh-hero .mh-circle::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background-image: url("../img/circle-contour.svg");
+  background-size: cover;
+  background-position: center;
+  animation: mhCircleRotate 50s linear infinite;
+}
+
+@keyframes mhCircleFadeIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes mhCircleRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-hero .mh-circle::before {
+    animation: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .mh-hero .mh-circle {
+    height: 330px;
+    width: 330px;
+  }
+}
+
 .mh-hero .mh-photo {
   position: relative;
   z-index: 10;
@@ -376,6 +429,12 @@
     width: auto !important;
     max-width: none;
     animation-name: mhPhotoInBig;
+  }
+
+  .mh-hero .mh-circle {
+    height: 122%;
+    width: auto;
+    aspect-ratio: 1 / 1;
   }
 
   /* Keep the name legible on the off-chance it ever passes in
