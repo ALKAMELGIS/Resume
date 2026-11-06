@@ -32,6 +32,7 @@
   <link href="assets/css/moments-gallery.css" rel="stylesheet">
   <link href="assets/css/cursor-fx.css" rel="stylesheet">
   <link href="assets/css/references-marquee.css" rel="stylesheet">
+  <link href="assets/css/contact-globe.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: MyResume - v4.9.2
@@ -517,66 +518,82 @@
     </section><!-- End References Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact mc-contact">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title mc-title">
           <h2>Contact</h2>
+          <p>Always open to new opportunities and collaborations — reach out through any channel below.</p>
         </div>
 
-        <div class="row mt-1">
+        <div class="mc-grid">
 
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>UAE , Abu Dhabi</p>
-              </div>
+          <div class="mc-left">
+            <h3>Get in Touch</h3>
+            <p class="mc-blurb">I typically reply within one business day.</p>
 
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>Alkamelgis@gmail.com</p>
-                <p>Alkamelgeo@gmail.com</p>
-              </div>
+            <ul class="mc-info-list">
+              <li>
+                <span class="mc-icon"><i class="bi bi-geo-alt"></i></span>
+                <div>
+                  <h4>Location</h4>
+                  <p>UAE , Abu Dhabi</p>
+                </div>
+              </li>
 
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+9 7155 35121 42</p>
-                <p>+2 4992 00975 74</p>
-              </div>
+              <li>
+                <span class="mc-icon"><i class="bi bi-envelope"></i></span>
+                <div>
+                  <h4>Email</h4>
+                  <p><a href="mailto:Alkamelgis@gmail.com">Alkamelgis@gmail.com</a></p>
+                  <p><a href="mailto:Alkamelgeo@gmail.com">Alkamelgeo@gmail.com</a></p>
+                </div>
+              </li>
 
+              <li>
+                <span class="mc-icon"><i class="bi bi-phone"></i></span>
+                <div>
+                  <h4>Call</h4>
+                  <p>+9 7155 35121 42</p>
+                  <p>+2 4992 00975 74</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="mc-globe-wrap" aria-hidden="true">
+              <img src="assets/img/globe-outline.svg" class="mc-globe" alt="">
+              <img src="assets/img/contact-portrait.png" class="mc-portrait" alt="">
             </div>
-
           </div>
 
-          <div class="col-lg-8 mt-5 mt-lg-0">
+          <div class="mc-right">
+            <div class="mc-card">
+              <h3>Send a Message</h3>
+              <p>Fill out the form and I'll get back to you promptly.</p>
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  </div>
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
                 </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit">Send Message</button></div>
+              </form>
+            </div>
           </div>
 
         </div>

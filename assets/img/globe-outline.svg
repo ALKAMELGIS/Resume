@@ -1,0 +1,13 @@
+<svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+<g>
+<circle cx="220.0" cy="220.0" r="200" fill="none" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+<ellipse cx="220.0" cy="88.0" rx="150.3" ry="24.0" fill="none" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+<ellipse cx="220.0" cy="154.0" rx="188.8" ry="30.2" fill="none" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+<ellipse cx="220.0" cy="220.0" rx="200.0" ry="32.0" fill="none" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+<ellipse cx="220.0" cy="286.0" rx="188.8" ry="30.2" fill="none" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+<ellipse cx="220.0" cy="352.0" rx="150.3" ry="24.0" fill="none" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+<ellipse cx="220.0" cy="220.0" rx="173.2" ry="200" fill="none" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+<ellipse cx="220.0" cy="220.0" rx="100.0" ry="200" fill="none" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+<line x1="220.0" y1="20.0" x2="220.0" y2="420.0" stroke="#1c1c1c" stroke-width="1.1" opacity="0.55"/>
+</g>
+</svg>
