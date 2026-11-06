@@ -284,7 +284,7 @@
   width: 345px;
   border-radius: 50%;
   overflow: hidden;
-  background: rgba(212, 166, 97, 0.72);
+  background: rgba(226, 169, 72, 0.9);
   opacity: 0;
   animation: mhCircleFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 0.2s;
