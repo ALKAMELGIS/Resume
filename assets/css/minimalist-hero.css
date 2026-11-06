@@ -146,11 +146,12 @@
 .mh-hero .mh-text-left h1 {
   margin: 0 0 18px;
   font-family: "Playfair Display", serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
   line-height: 0.95;
-  font-size: 54px;
+  font-size: 38px;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .mh-hero .mh-text-left .mh-name {
@@ -181,6 +182,12 @@
   }
 }
 
+@media (min-width: 992px) {
+  .mh-hero .mh-text-left h1 {
+    white-space: normal;
+  }
+}
+
 @media (min-width: 1200px) {
   .mh-hero .mh-text-left h1 {
     font-size: 72px;
@@ -204,7 +211,7 @@
   justify-content: flex-start;
   min-height: 48px;
   font-family: "Playfair Display", serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
   font-size: 19px;
 }
