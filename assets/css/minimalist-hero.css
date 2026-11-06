@@ -204,15 +204,16 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-image-wrap {
-    order: 2;
+    order: 3;
+    justify-content: flex-end;
   }
 }
 
 .mh-hero .mh-circle {
   position: absolute;
   z-index: 0;
-  height: 300px;
-  width: 300px;
+  height: 320px;
+  width: 320px;
   border-radius: 50%;
   overflow: hidden;
   background: rgba(226, 169, 72, 0.85);
@@ -247,22 +248,22 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-circle {
-    height: 380px;
-    width: 380px;
+    height: 410px;
+    width: 410px;
   }
 }
 
 @media (min-width: 1200px) {
   .mh-hero .mh-circle {
-    height: 440px;
-    width: 440px;
+    height: 480px;
+    width: 480px;
   }
 }
 
 .mh-hero .mh-photo {
   position: relative;
   z-index: 10;
-  width: 168px;
+  width: 182px;
   height: auto;
   object-fit: contain;
   border-radius: 0;
@@ -276,13 +277,13 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-photo {
-    width: 192px;
+    width: 208px;
   }
 }
 
 @media (min-width: 1200px) {
   .mh-hero .mh-photo {
-    width: 216px;
+    width: 236px;
   }
 }
 
@@ -300,6 +301,7 @@
 
 @media (min-width: 768px) {
   .mh-hero .mh-text-right {
+    order: 2;
     justify-content: flex-start;
     text-align: center;
   }
@@ -356,7 +358,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   color: #0563bb;
-  margin-bottom: 12px;
+  margin-top: 14px;
   white-space: nowrap;
 }
 
