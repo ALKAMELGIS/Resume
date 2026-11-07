@@ -147,7 +147,15 @@ section { background: transparent !important; }
   background-color: var(--mh-ink) !important;
 }
 
-/* ---------- Resume ---------- */
+/* ---------- Resume ----------
+   Compact, elegant timeline: smaller type, tighter rhythm, thin
+   dot instead of the oversized default, no shouting uppercase on
+   job titles. Built to read as one refined column of entries, not
+   a page of empty space between them. */
+.resume {
+  padding: 36px 0;
+}
+
 .resume .row {
   display: flex;
   flex-wrap: wrap;
@@ -161,16 +169,26 @@ section { background: transparent !important; }
 .resume .resume-title {
   color: var(--mh-ink);
   font-weight: 700;
-  letter-spacing: 0.1em;
-  font-size: 13px;
+  letter-spacing: 0.12em;
+  font-size: 11.5px;
   text-transform: uppercase;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.resume .resume-title:first-child {
+  margin-top: 0;
 }
 
 .resume .resume-item {
   border-left-color: #e7e3da;
-  padding: 0 0 25px 25px;
-  margin-top: 25px;
+  padding: 0 0 14px 20px;
+  margin-top: 14px;
   transition: border-color 0.3s, transform 0.3s;
+}
+
+.resume .resume-item.pb-0 {
+  padding-bottom: 2px;
 }
 
 .resume .resume-item:hover {
@@ -179,6 +197,10 @@ section { background: transparent !important; }
 }
 
 .resume .resume-item::before {
+  width: 9px;
+  height: 9px;
+  left: -5.5px;
+  top: 3px;
   background: var(--mh-bg);
   border-color: var(--mh-amber);
   transition: background 0.3s, transform 0.3s;
@@ -191,13 +213,23 @@ section { background: transparent !important; }
 
 .resume .resume-item h4 {
   color: var(--mh-ink);
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1.35;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 5px;
 }
 
 .resume .resume-item h5 {
   background: var(--mh-bg-alt);
   color: var(--mh-ink-soft);
-  padding: 4px 14px;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 3px 11px;
+  margin-bottom: 6px;
+  margin-right: 5px;
   border-radius: 999px;
   transition: background 0.3s, color 0.3s;
 }
@@ -205,6 +237,17 @@ section { background: transparent !important; }
 .resume .resume-item:hover h5 {
   background: var(--mh-accent-soft);
   color: var(--mh-accent);
+}
+
+.resume .resume-item p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 4px;
+  color: var(--mh-ink-soft);
+}
+
+.resume .resume-item p:last-child {
+  margin-bottom: 0;
 }
 
 /* Core Expertise skill chips — fill the Education column and give it
@@ -215,16 +258,16 @@ section { background: transparent !important; }
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .res-skill-tag {
   display: inline-block;
   background: var(--mh-bg-alt);
   color: var(--mh-ink);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  padding: 7px 16px;
+  padding: 5px 13px;
   border-radius: 999px;
   border: 1px solid #e7e3da;
   cursor: default;
