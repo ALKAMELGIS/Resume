@@ -12,18 +12,18 @@
   var BASEMAPS = {
     gray: {
       label: "Gray",
-      url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-      options: { subdomains: "abcd", maxZoom: 19 },
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      options: { maxZoom: 19, maxNativeZoom: 16 },
     },
     dark: {
       label: "Dark",
-      url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-      options: { subdomains: "abcd", maxZoom: 19 },
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      options: { maxZoom: 19, maxNativeZoom: 16 },
     },
     satellite: {
       label: "Satellite",
       url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-      options: { maxZoom: 19 },
+      options: { maxZoom: 19, maxNativeZoom: 19 },
     },
   };
   var BASEMAP_ORDER = ["gray", "dark", "satellite"];
