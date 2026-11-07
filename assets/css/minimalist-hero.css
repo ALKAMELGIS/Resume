@@ -225,6 +225,29 @@
   transform: translateY(8px);
 }
 
+/* Phone widths: longer role titles ("Information Management
+   Officer", "Remote Sensing & Geospatial AI") wrap to two lines
+   at 22px. Shrink the text and force it onto one line instead of
+   letting it break mid-phrase. */
+@media (max-width: 575px) {
+  #hero.mh-hero .mh-rotator-wrap {
+    font-size: 15px;
+    padding: 0 6px;
+  }
+  .mh-hero .mh-rotator-text {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  #hero.mh-hero .mh-rotator-wrap {
+    font-size: 17px;
+  }
+  .mh-hero .mh-rotator-text {
+    white-space: nowrap;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mh-hero .mh-rotator-text {
     transition: none;
