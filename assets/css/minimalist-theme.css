@@ -550,3 +550,9 @@ section { background: transparent !important; }
     text-align: center;
   }
 }
+
+/* About-section keyword highlights: color only the term itself,
+   no background/bold, matching the existing inline link color. */
+.mh-keyword {
+  color: var(--mh-accent, #0563bb);
+}
