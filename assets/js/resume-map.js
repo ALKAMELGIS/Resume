@@ -129,11 +129,11 @@
       var markerIcon = L.divIcon({
         className: "res-map-marker",
         html:
-          '<span style="display:block;width:14px;height:14px;border-radius:50%;' +
-          'background:#e2a948;border:2px solid #1c1c1c;box-shadow:0 2px 6px rgba(28,28,28,0.35);"></span>',
-        iconSize: [14, 14],
-        iconAnchor: [7, 7],
-        popupAnchor: [0, -8],
+          '<span class="res-pin-pulse"></span>' +
+          '<span class="res-pin-icon"><i class="bi bi-geo-alt-fill"></i></span>',
+        iconSize: [28, 36],
+        iconAnchor: [14, 36],
+        popupAnchor: [0, -34],
       });
 
       var bounds = [];
@@ -143,10 +143,67 @@
         bounds.push([loc.lat, loc.lng]);
       });
 
+      addFlowLines();
+
       if (bounds.length === 1) {
         map.setView(bounds[0], 6);
       } else {
         map.fitBounds(bounds, { padding: [40, 40] });
+      }
+    }
+
+    function bearingDeg(a, b) {
+      var dLat = b[0] - a[0];
+      var dLng = b[1] - a[1];
+      return (Math.atan2(dLng, dLat) * 180) / Math.PI;
+    }
+
+    function midpoint(a, b) {
+      return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    }
+
+    function findLocation(nameFragment) {
+      var match = locations.filter(function (loc) {
+        return loc.place.indexOf(nameFragment) !== -1;
+      })[0];
+      return match ? [match.lat, match.lng] : null;
+    }
+
+    function addFlowLines() {
+      // Connects the career path (Sudan -> UAE) with an animated dashed
+      // line and a plane icon sitting at the midpoint of each leg.
+      var order = ["Khartoum", "Abu Dhabi", "Dibba"];
+      var points = order
+        .map(findLocation)
+        .filter(function (p) {
+          return p !== null;
+        });
+
+      for (var i = 0; i < points.length - 1; i++) {
+        var a = points[i];
+        var b = points[i + 1];
+
+        L.polyline([a, b], {
+          color: "#e2a948",
+          weight: 2,
+          opacity: 0.85,
+          dashArray: "6, 8",
+          className: "res-flow-line",
+          interactive: false,
+        }).addTo(map);
+
+        var mid = midpoint(a, b);
+        var angle = bearingDeg(a, b);
+        var planeIcon = L.divIcon({
+          className: "res-plane-marker",
+          html:
+            '<div class="res-plane-wrap" style="transform:rotate(' + angle + 'deg);">' +
+            '<span class="res-plane-float"><i class="bi bi-airplane-fill"></i></span>' +
+            "</div>",
+          iconSize: [24, 24],
+          iconAnchor: [12, 12],
+        });
+        L.marker(mid, { icon: planeIcon, interactive: false }).addTo(map);
       }
     }
 
