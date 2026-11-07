@@ -24,6 +24,7 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -147,6 +148,7 @@
           <button type="button" class="res-tab" data-tab="education" role="tab" aria-selected="false" id="res-tab-education" aria-controls="res-panel-education">Education</button>
           <button type="button" class="res-tab" data-tab="certifications" role="tab" aria-selected="false" id="res-tab-certifications" aria-controls="res-panel-certifications">Certifications</button>
           <button type="button" class="res-tab" data-tab="skills" role="tab" aria-selected="false" id="res-tab-skills" aria-controls="res-panel-skills">Skills</button>
+          <button type="button" class="res-tab" data-tab="map" role="tab" aria-selected="false" id="res-tab-map" aria-controls="res-panel-map">Map</button>
         </div>
 
         <div class="res-panels">
@@ -268,6 +270,34 @@
                 <li class="res-skill-tag">Cartography</li>
                 <li class="res-skill-tag">Enterprise GIS Architecture</li>
               </ul>
+            </div>
+          </div>
+
+          <div class="res-panel" id="res-panel-map" role="tabpanel" aria-labelledby="res-tab-map" hidden>
+            <div class="res-card res-card-map">
+              <div id="res-map" class="res-map" role="img" aria-label="Map of employer locations in the UAE and Sudan"></div>
+              <script type="application/json" id="res-map-data">
+                [
+                  {
+                    "lat": 24.4539,
+                    "lng": 54.3773,
+                    "place": "Abu Dhabi, UAE",
+                    "companies": ["Elite Agro Projects", "Global Surveying Projects", "Lavajet Company"]
+                  },
+                  {
+                    "lat": 25.5913,
+                    "lng": 56.2666,
+                    "place": "Dibba Al-Fujairah, UAE",
+                    "companies": ["Dibba Municipality"]
+                  },
+                  {
+                    "lat": 15.5007,
+                    "lng": 32.5599,
+                    "place": "Khartoum, Sudan",
+                    "companies": ["World Health Organization", "Federal Ministry of Health", "AfroMap - Part-time"]
+                  }
+                ]
+              </script>
             </div>
           </div>
 
@@ -714,6 +744,8 @@
   <script src="assets/js/references-marquee.js"></script>
   <script src="assets/js/hero-rotator.js"></script>
   <script src="assets/js/resume-tabs.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/resume-map.js"></script>
 
 </body>
 
