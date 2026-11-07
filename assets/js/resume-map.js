@@ -159,8 +159,66 @@
       return match ? [match.lat, match.lng] : null;
     }
 
+    function buildArc(a, b, steps) {
+      // Quadratic-bezier arc between two points, bulging outward like a
+      // typical flight-path / flow-map line instead of a straight segment.
+      var dLat = b[0] - a[0];
+      var dLng = b[1] - a[1];
+      var dist = Math.sqrt(dLat * dLat + dLng * dLng) || 1;
+      var mid = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+      var curveFactor = 0.22;
+      // Perpendicular unit vector to the a->b line.
+      var normLat = -dLng / dist;
+      var normLng = dLat / dist;
+      var ctrl = [mid[0] + normLat * dist * curveFactor, mid[1] + normLng * dist * curveFactor];
+
+      var pts = [];
+      for (var s = 0; s <= steps; s++) {
+        var t = s / steps;
+        var inv = 1 - t;
+        var lat = inv * inv * a[0] + 2 * inv * t * ctrl[0] + t * t * b[0];
+        var lng = inv * inv * a[1] + 2 * inv * t * ctrl[1] + t * t * b[1];
+        pts.push([lat, lng]);
+      }
+      return pts;
+    }
+
+    function animatePlaneAlongArc(arcPoints, marker) {
+      // Flies the plane the full way from one end of the arc to the
+      // other, then back again, looping continuously.
+      var n = arcPoints.length;
+      var DURATION_MS = 4500;
+      var startTime = null;
+
+      function frame(timestamp) {
+        if (startTime === null) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        var cyclePos = elapsed % (DURATION_MS * 2);
+        var t = cyclePos <= DURATION_MS ? cyclePos / DURATION_MS : 2 - cyclePos / DURATION_MS;
+
+        var idx = Math.min(n - 1, Math.max(0, Math.round(t * (n - 1))));
+        marker.setLatLng(arcPoints[idx]);
+
+        var p1 = arcPoints[Math.max(0, idx - 1)];
+        var p2 = arcPoints[Math.min(n - 1, idx + 1)];
+        var angle = (Math.atan2(p2[1] - p1[1], p2[0] - p1[0]) * 180) / Math.PI;
+        if (cyclePos > DURATION_MS) angle += 180;
+
+        var el = marker.getElement ? marker.getElement() : null;
+        if (el) {
+          var wrap = el.querySelector(".res-plane-wrap");
+          if (wrap) wrap.style.transform = "rotate(" + angle + "deg)";
+        }
+
+        requestAnimationFrame(frame);
+      }
+
+      requestAnimationFrame(frame);
+    }
+
     function addFlowLines() {
-      // Connects the career path (Sudan -> UAE) with an animated dashed line.
+      // Connects the career path (Sudan -> UAE) with an animated dashed
+      // curved line and a plane that flies the full stretch of each leg.
       var order = ["Khartoum", "Abu Dhabi", "Dibba"];
       var points = order
         .map(findLocation)
@@ -171,15 +229,26 @@
       for (var i = 0; i < points.length - 1; i++) {
         var a = points[i];
         var b = points[i + 1];
+        var arc = buildArc(a, b, 48);
 
-        L.polyline([a, b], {
+        L.polyline(arc, {
           color: "#e2a948",
           weight: 2,
           opacity: 0.85,
           dashArray: "6, 8",
           className: "res-flow-line",
           interactive: false,
+          smoothFactor: 1,
         }).addTo(map);
+
+        var planeIcon = L.divIcon({
+          className: "res-plane-marker",
+          html: '<div class="res-plane-wrap"><i class="bi bi-airplane-fill"></i></div>',
+          iconSize: [24, 24],
+          iconAnchor: [12, 12],
+        });
+        var planeMarker = L.marker(arc[0], { icon: planeIcon, interactive: false }).addTo(map);
+        animatePlaneAlongArc(arc, planeMarker);
       }
     }
 
