@@ -152,16 +152,6 @@
       }
     }
 
-    function bearingDeg(a, b) {
-      var dLat = b[0] - a[0];
-      var dLng = b[1] - a[1];
-      return (Math.atan2(dLng, dLat) * 180) / Math.PI;
-    }
-
-    function midpoint(a, b) {
-      return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
-    }
-
     function findLocation(nameFragment) {
       var match = locations.filter(function (loc) {
         return loc.place.indexOf(nameFragment) !== -1;
@@ -170,8 +160,7 @@
     }
 
     function addFlowLines() {
-      // Connects the career path (Sudan -> UAE) with an animated dashed
-      // line and a plane icon sitting at the midpoint of each leg.
+      // Connects the career path (Sudan -> UAE) with an animated dashed line.
       var order = ["Khartoum", "Abu Dhabi", "Dibba"];
       var points = order
         .map(findLocation)
@@ -191,40 +180,7 @@
           className: "res-flow-line",
           interactive: false,
         }).addTo(map);
-
-        var angle = bearingDeg(a, b);
-        var planeIcon = L.divIcon({
-          className: "res-plane-marker",
-          html:
-            '<div class="res-plane-wrap" style="transform:rotate(' + angle + 'deg);">' +
-            '<i class="bi bi-airplane-fill"></i>' +
-            "</div>",
-          iconSize: [24, 24],
-          iconAnchor: [12, 12],
-        });
-        var planeMarker = L.marker(midpoint(a, b), { icon: planeIcon, interactive: false }).addTo(map);
-        animateMidpointPlane(a, b, planeMarker);
       }
-    }
-
-    function animateMidpointPlane(a, b, marker) {
-      // Keeps the plane confined to the middle stretch of the line
-      // (never reaching either endpoint), drifting back and forth.
-      var CENTER = 0.5;
-      var AMPLITUDE = 0.15; // oscillates between 0.35 and 0.65
-      var PERIOD_MS = 3400;
-      var start = null;
-
-      function frame(timestamp) {
-        if (start === null) start = timestamp;
-        var elapsed = timestamp - start;
-        var phase = (elapsed % PERIOD_MS) / PERIOD_MS;
-        var t = CENTER + AMPLITUDE * Math.sin(phase * Math.PI * 2);
-        marker.setLatLng([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
-        requestAnimationFrame(frame);
-      }
-
-      requestAnimationFrame(frame);
     }
 
     mapTabBtn.addEventListener("click", function () {

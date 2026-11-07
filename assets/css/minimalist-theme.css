@@ -400,23 +400,6 @@ section { background: transparent !important; }
   }
 }
 
-.res-plane-marker {
-  pointer-events: none;
-}
-
-.res-plane-wrap {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  color: var(--mh-ink);
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(28, 28, 28, 0.3);
-}
-
 /* Basemap switcher (Gray / Dark / Satellite) */
 .res-basemap-control {
   position: relative;
