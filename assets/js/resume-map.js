@@ -192,19 +192,39 @@
           interactive: false,
         }).addTo(map);
 
-        var mid = midpoint(a, b);
         var angle = bearingDeg(a, b);
         var planeIcon = L.divIcon({
           className: "res-plane-marker",
           html:
             '<div class="res-plane-wrap" style="transform:rotate(' + angle + 'deg);">' +
-            '<span class="res-plane-float"><i class="bi bi-airplane-fill"></i></span>' +
+            '<i class="bi bi-airplane-fill"></i>' +
             "</div>",
           iconSize: [24, 24],
           iconAnchor: [12, 12],
         });
-        L.marker(mid, { icon: planeIcon, interactive: false }).addTo(map);
+        var planeMarker = L.marker(midpoint(a, b), { icon: planeIcon, interactive: false }).addTo(map);
+        animateMidpointPlane(a, b, planeMarker);
       }
+    }
+
+    function animateMidpointPlane(a, b, marker) {
+      // Keeps the plane confined to the middle stretch of the line
+      // (never reaching either endpoint), drifting back and forth.
+      var CENTER = 0.5;
+      var AMPLITUDE = 0.15; // oscillates between 0.35 and 0.65
+      var PERIOD_MS = 3400;
+      var start = null;
+
+      function frame(timestamp) {
+        if (start === null) start = timestamp;
+        var elapsed = timestamp - start;
+        var phase = (elapsed % PERIOD_MS) / PERIOD_MS;
+        var t = CENTER + AMPLITUDE * Math.sin(phase * Math.PI * 2);
+        marker.setLatLng([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
+        requestAnimationFrame(frame);
+      }
+
+      requestAnimationFrame(frame);
     }
 
     mapTabBtn.addEventListener("click", function () {

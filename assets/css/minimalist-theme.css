@@ -417,21 +417,6 @@ section { background: transparent !important; }
   box-shadow: 0 2px 6px rgba(28, 28, 28, 0.3);
 }
 
-.res-plane-float {
-  display: flex;
-  animation: resPlaneFloat 2s ease-in-out infinite;
-}
-
-@keyframes resPlaneFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
-}
-
 /* Basemap switcher (Gray / Dark / Satellite) */
 .res-basemap-control {
   position: relative;
