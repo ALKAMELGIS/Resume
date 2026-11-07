@@ -241,14 +241,18 @@
           smoothFactor: 1,
         }).addTo(map);
 
-        var planeIcon = L.divIcon({
-          className: "res-plane-marker",
-          html: '<div class="res-plane-wrap"><i class="bi bi-airplane-fill"></i></div>',
-          iconSize: [24, 24],
-          iconAnchor: [12, 12],
-        });
-        var planeMarker = L.marker(arc[0], { icon: planeIcon, interactive: false }).addTo(map);
-        animatePlaneAlongArc(arc, planeMarker);
+        // Only the first leg (the Sudan -> UAE crossing) gets an animated
+        // plane; a plane on every short intra-UAE hop is too busy.
+        if (i === 0) {
+          var planeIcon = L.divIcon({
+            className: "res-plane-marker",
+            html: '<div class="res-plane-wrap"><i class="bi bi-airplane-fill"></i></div>',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+          });
+          var planeMarker = L.marker(arc[0], { icon: planeIcon, interactive: false }).addTo(map);
+          animatePlaneAlongArc(arc, planeMarker);
+        }
       }
     }
 
