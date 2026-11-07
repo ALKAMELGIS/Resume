@@ -148,106 +148,165 @@ section { background: transparent !important; }
 }
 
 /* ---------- Resume ----------
-   Compact, elegant timeline: smaller type, tighter rhythm, thin
-   dot instead of the oversized default, no shouting uppercase on
-   job titles. Built to read as one refined column of entries, not
-   a page of empty space between them. */
+   Tabbed layout: one category visible at a time instead of a long
+   two-column timeline. Flat card list inside each panel, no dots
+   or connector lines — a cleaner, more "app-like" presentation. */
 .resume {
-  padding: 36px 0;
+  padding: 48px 0;
 }
 
-.resume .row {
+.res-tabs {
   display: flex;
   flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 1px solid #e7e3da;
+  margin-bottom: 28px;
 }
 
-.resume .row > [class*="col-"] {
-  display: flex;
-  flex-direction: column;
+.res-tab {
+  appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--mh-ink-soft);
+  padding: 10px 4px;
+  margin-right: 22px;
+  position: relative;
+  transition: color 0.25s;
 }
 
-.resume .resume-title {
-  color: var(--mh-ink);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  font-size: 11.5px;
-  text-transform: uppercase;
-  margin-top: 30px;
-  margin-bottom: 10px;
-}
-
-.resume .resume-title:first-child {
-  margin-top: 0;
-}
-
-.resume .resume-item {
-  border-left-color: #e7e3da;
-  padding: 0 0 14px 20px;
-  margin-top: 14px;
-  transition: border-color 0.3s, transform 0.3s;
-}
-
-.resume .resume-item.pb-0 {
-  padding-bottom: 2px;
-}
-
-.resume .resume-item:hover {
-  border-left-color: var(--mh-amber);
-  transform: translateX(4px);
-}
-
-.resume .resume-item::before {
-  width: 9px;
-  height: 9px;
-  left: -5.5px;
-  top: 3px;
-  background: var(--mh-bg);
-  border-color: var(--mh-amber);
-  transition: background 0.3s, transform 0.3s;
-}
-
-.resume .resume-item:hover::before {
+.res-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
   background: var(--mh-amber);
-  transform: scale(1.25);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
 }
 
-.resume .resume-item h4 {
+.res-tab:hover {
+  color: var(--mh-ink);
+}
+
+.res-tab.active {
+  color: var(--mh-ink);
+}
+
+.res-tab.active::after {
+  transform: scaleX(1);
+}
+
+.res-panel {
+  animation: resPanelIn 0.35s ease;
+}
+
+@keyframes resPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.res-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.res-card {
+  background: #fff;
+  border: 1px solid #ebe7de;
+  border-radius: 14px;
+  padding: 20px 22px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.res-card:hover {
+  border-color: var(--mh-amber);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(28, 28, 28, 0.06);
+}
+
+.res-card h4 {
   color: var(--mh-ink);
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: 15px;
   line-height: 1.35;
-  text-transform: none;
-  letter-spacing: 0;
-  margin-bottom: 5px;
+  margin: 0 0 8px;
 }
 
-.resume .resume-item h5 {
+.res-card-sub {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mh-accent);
+  margin: -4px 0 8px;
+}
+
+.res-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.res-chip {
+  display: inline-block;
   background: var(--mh-bg-alt);
   color: var(--mh-ink-soft);
   font-size: 11.5px;
   font-weight: 600;
   line-height: 1.4;
   padding: 3px 11px;
-  margin-bottom: 6px;
-  margin-right: 5px;
   border-radius: 999px;
-  transition: background 0.3s, color 0.3s;
 }
 
-.resume .resume-item:hover h5 {
+.res-chip-date {
   background: var(--mh-accent-soft);
   color: var(--mh-accent);
 }
 
-.resume .resume-item p {
+.res-card p {
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 0 0 4px;
   color: var(--mh-ink-soft);
 }
 
-.resume .resume-item p:last-child {
+.res-card p:last-child {
   margin-bottom: 0;
+}
+
+.res-card-summary,
+.res-card-skills {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 767px) {
+  .res-tabs {
+    gap: 2px;
+  }
+
+  .res-tab {
+    font-size: 12px;
+    margin-right: 14px;
+    padding: 8px 2px;
+  }
+
+  .res-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Core Expertise skill chips — fill the Education column and give it
