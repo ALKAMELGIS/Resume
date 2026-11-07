@@ -34,12 +34,10 @@
     }
 
     function createMap() {
-      map = L.map(mapEl, { scrollWheelZoom: false });
+      map = L.map(mapEl, { scrollWheelZoom: false, attributionControl: false });
 
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
       var markerIcon = L.divIcon({
