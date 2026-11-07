@@ -328,6 +328,68 @@ section { background: transparent !important; }
   color: var(--mh-ink-soft);
 }
 
+/* Basemap switcher (Gray / Dark / Satellite) */
+.res-basemap-control {
+  position: relative;
+}
+
+.res-basemap-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  color: var(--mh-ink);
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+
+.res-basemap-toggle:hover {
+  color: var(--mh-accent);
+}
+
+.res-basemap-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 110px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.res-basemap-option {
+  appearance: none;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--mh-ink-soft);
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.res-basemap-option:hover {
+  background: var(--mh-bg-alt);
+  color: var(--mh-ink);
+}
+
+.res-basemap-option.active {
+  background: var(--mh-accent-soft);
+  color: var(--mh-accent);
+}
+
 @media (max-width: 575px) {
   .res-map {
     height: 320px;
