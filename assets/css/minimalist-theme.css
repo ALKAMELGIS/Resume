@@ -690,10 +690,11 @@ section { background: transparent !important; }
   color: #2b5fe0;
 }
 
-/* Mosaic bento layout — one big "hero" cell plus three smaller
-   cells (stat / icon / wide) per block, repeating down the grid,
-   matching a bento-style reference layout. */
-.services-grid {
+/* Mosaic bento layout — one big "hero" cell, two small cells and
+   one wide cell on top, then a three-card row below (a CTA plus two
+   compact highlights) — a single composition, not a repeating grid,
+   matching the bento-style reference layout exactly. */
+.services-top {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(160px, auto);
@@ -701,8 +702,16 @@ section { background: transparent !important; }
   gap: 20px;
 }
 
+.services-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
 .svc-cell {
   display: flex;
+  text-decoration: none;
 }
 
 .svc-cell .icon-box {
@@ -784,8 +793,58 @@ section { background: transparent !important; }
   text-align: left;
 }
 
+/* CTA cell — a linked card, not a service; eyebrow + title + an
+   arrow that slides on hover. */
+.svc-cell-cta .icon-box {
+  justify-content: space-between;
+  padding: 26px 26px 22px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.svc-cell-cta .svc-eyebrow {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8fb4ff;
+}
+
+.svc-cell-cta h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.svc-cell-cta .svc-cta-arrow {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-top: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s;
+}
+
+.svc-cell-cta .svc-cta-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.svc-cell-cta:hover .svc-cta-arrow {
+  background: var(--mh-accent);
+  transform: translate(3px, -3px);
+}
+
 @media (max-width: 991px) {
-  .services-grid {
+  .services-top,
+  .services-bottom {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -799,7 +858,8 @@ section { background: transparent !important; }
 }
 
 @media (max-width: 575px) {
-  .services-grid {
+  .services-top,
+  .services-bottom {
     grid-template-columns: 1fr;
     gap: 16px;
   }
