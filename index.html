@@ -30,7 +30,7 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/minimalist-hero.css" rel="stylesheet">
   <link href="assets/css/minimalist-theme.css" rel="stylesheet">
-  <link href="assets/css/morph-gallery.css" rel="stylesheet">
+  <link href="assets/css/stack-gallery.css" rel="stylesheet">
   <link href="assets/css/moments-gallery.css" rel="stylesheet">
   <link href="assets/css/references-marquee.css" rel="stylesheet">
   <link href="assets/css/contact-globe.css" rel="stylesheet">
@@ -315,12 +315,8 @@
     <!-- ======= Map Work Showcase ======= -->
     <section id="map-showcase" class="mw-section">
       <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Selected Work</h2>
-          <p>Map Showcase</p>
-        </div>
         <div class="mw-wrap">
-          <div class="mg-root" tabindex="0" data-autoplay="4500" data-items='[
+          <div class="ms-root" tabindex="0" data-autoplay="4500" data-items='[
             {"img":"assets/img/showcase/elephant-habitats.jpg","title":"African Elephant Habitats","desc":"Atlas mapping of African elephant distribution — an estimated 415,000 across the continent.","href":"assets/img/showcase/elephant-habitats.jpg"},
             {"img":"assets/img/showcase/philippine-eagle.jpg","title":"Philippine Eagle Suitable Habitats","desc":"2.8M hectares of remaining forest supporting the critically endangered Philippine eagle.","href":"assets/img/showcase/philippine-eagle.jpg"},
             {"img":"assets/img/showcase/philippines-volcanoes.jpg","title":"Archipelago Built Upon Volcanoes","desc":"Mapping the Philippines’ 24 active and 18 potentially active volcanoes.","href":"assets/img/showcase/philippines-volcanoes.jpg"},
@@ -336,23 +332,22 @@
             {"img":"assets/img/portfolio/portfolio-9.jpg","title":"COVID-19 Dashboard, Sudan","desc":"Epidemiological surveillance dashboard tracking cases, 2020–2021.","href":"assets/img/portfolio/portfolio-9.jpg"},
             {"img":"assets/img/portfolio/portfolio-5.jpg","title":"Health Cluster 4Ws Indicators","desc":"WHO indicator dashboard summarizing partner health interventions.","href":"assets/img/portfolio/portfolio-5.jpg"}
           ]'>
-            <canvas class="mg-canvas" aria-hidden="true"></canvas>
-            <div class="mg-fade" aria-hidden="true"></div>
-            <div class="mg-info">
-              <p class="mg-title"></p>
-              <p class="mg-desc"></p>
-            </div>
-            <button type="button" class="mg-arrow mg-arrow-prev" aria-label="Previous image">
+            <div class="ms-stage"></div>
+            <button type="button" class="ms-arrow ms-arrow-prev" aria-label="Previous image">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
-            <button type="button" class="mg-arrow mg-arrow-next" aria-label="Next image">
+            <button type="button" class="ms-arrow ms-arrow-next" aria-label="Next image">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
-            <a class="mg-open" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open full image">
+            <a class="ms-open" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open full image">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
-            <ul class="mg-thumbs"></ul>
           </div>
+          <div class="ms-info">
+            <p class="ms-title"></p>
+            <p class="ms-desc"></p>
+          </div>
+          <ul class="ms-thumbs"></ul>
         </div>
       </div>
     </section><!-- End Map Work Showcase -->
@@ -874,7 +869,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/morph-gallery.js"></script>
+  <script src="assets/js/stack-gallery.js"></script>
   <script src="assets/js/moments-gallery.js"></script>
   <script src="assets/js/references-marquee.js"></script>
   <script src="assets/js/hero-rotator.js"></script>
