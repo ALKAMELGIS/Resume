@@ -577,6 +577,15 @@ section { background: transparent !important; }
   color: var(--mh-ink-soft);
 }
 
+.services .icon-box .svc-tags {
+  color: var(--mh-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
 .services .icon-box .icon,
 .services .iconbox-blue i,
 .services .iconbox-orange i,
