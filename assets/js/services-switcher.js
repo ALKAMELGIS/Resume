@@ -27,6 +27,7 @@
 
     var tabs = Array.prototype.slice.call(root.querySelectorAll(".svc-tab"));
     var card = root.querySelector(".svc-card");
+    var photoEl = card.querySelector(".svc-card-photo img");
     var iconEl = card.querySelector(".svc-card-icon i");
     var chipEl = card.querySelector(".svc-chip");
     var taglineEl = card.querySelector(".svc-tagline");
@@ -38,6 +39,10 @@
     function applyIndex(index) {
       var item = items[index];
       card.className = "svc-card icon-box " + (item.variant || "svc-dark");
+      if (photoEl && item.img) {
+        photoEl.src = item.img;
+        photoEl.alt = item.title || item.tag || "";
+      }
       iconEl.className = item.icon;
       chipEl.textContent = pad(index + 1) + " • " + item.tag.toUpperCase();
       taglineEl.textContent = item.desc;
