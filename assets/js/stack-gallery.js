@@ -37,7 +37,6 @@
     var titleEl = wrap.querySelector(".ms-title");
     var descEl = wrap.querySelector(".ms-desc");
     var openEl = root.querySelector(".ms-open");
-    var thumbsEl = wrap.querySelector(".ms-thumbs");
     var prevBtn = root.querySelector(".ms-arrow-prev");
     var nextBtn = root.querySelector(".ms-arrow-next");
 
@@ -50,28 +49,6 @@
       stage.appendChild(card);
       return card;
     });
-
-    var thumbEls = [];
-    if (thumbsEl) {
-      items.forEach(function (item, i) {
-        var li = document.createElement("li");
-        li.className = "ms-thumb-item";
-        var btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "ms-thumb";
-        btn.setAttribute("aria-label", item.title || "Slide " + (i + 1));
-        var img = document.createElement("img");
-        img.src = item.thumb || item.img;
-        img.alt = "";
-        btn.appendChild(img);
-        btn.addEventListener("click", function () {
-          goTo(i);
-        });
-        li.appendChild(btn);
-        thumbsEl.appendChild(li);
-        thumbEls.push(btn);
-      });
-    }
 
     function setCardImage(card, item) {
       var img = card.querySelector("img");
@@ -105,18 +82,6 @@
         var href = current.href || current.img;
         openEl.setAttribute("href", href);
       }
-
-      thumbEls.forEach(function (btn, i) {
-        var isActive = i === active;
-        btn.classList.toggle("is-active", isActive);
-        if (isActive && btn.scrollIntoView) {
-          btn.scrollIntoView({
-            behavior: "smooth",
-            inline: "center",
-            block: "nearest",
-          });
-        }
-      });
 
       if (prevBtn) prevBtn.disabled = n <= 1;
       if (nextBtn) nextBtn.disabled = n <= 1;
