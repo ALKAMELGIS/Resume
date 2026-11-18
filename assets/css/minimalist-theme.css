@@ -555,26 +555,37 @@ section { background: transparent !important; }
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* ---------- Services ---------- */
+/* ---------- Services : bento grid ---------- */
 .services .icon-box {
+  position: relative;
+  width: 100%;
   background: #fff;
   border: 1px solid #ece8e0;
-  border-radius: 18px;
+  border-radius: 26px;
+  padding: 34px 28px 30px;
   box-shadow: none;
+  overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .services .icon-box:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(28, 28, 28, 0.08);
+  box-shadow: 0 24px 48px rgba(28, 28, 28, 0.12);
+}
+
+.services .icon-box h4 {
+  margin: 0 0 6px;
 }
 
 .services .icon-box h4 a {
   color: var(--mh-ink);
+  font-weight: 800;
+  font-size: 19px;
 }
 
 .services .icon-box p {
   color: var(--mh-ink-soft);
+  font-size: 14px;
 }
 
 .services .icon-box .svc-tags {
@@ -583,50 +594,100 @@ section { background: transparent !important; }
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 
-.services .icon-box .icon,
-.services .iconbox-blue i,
-.services .iconbox-orange i,
-.services .iconbox-green i,
-.services .iconbox-red i,
-.services .iconbox-yellow i,
-.services .iconbox-pink i {
-  color: var(--mh-ink) !important;
-}
-
-/* Interactive icons — scale, rotate slightly and pop to the accent
-   color on hover, with the background blob spinning gently. */
-.services .icon-box .icon {
-  position: relative;
+/* Icon chip — a rounded square badge that floats gently on its own,
+   independent of hover, so every service reads as "alive". */
+.services .icon-box .icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  font-size: 26px;
+  background: rgba(28, 28, 28, 0.05);
+  color: var(--mh-ink);
+  animation: svcFloat 3.6s ease-in-out infinite;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.services .icon-box .icon svg {
-  transition: transform 0.6s ease;
+.services .icon-box:hover .icon-chip {
+  transform: scale(1.08) rotate(-4deg);
 }
 
-.services .icon-box .icon i {
-  transition: color 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+@keyframes svcFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
 }
 
-.services .icon-box:hover .icon {
-  transform: scale(1.12) rotate(-6deg);
+.services .icon-box:hover .icon-chip {
+  animation-play-state: paused;
 }
 
-.services .icon-box:hover .icon svg {
-  transform: rotate(18deg);
+/* Variant backgrounds, cycling through the grid for a bento look. */
+.services .icon-box.svc-dark {
+  background: #14213d;
+  border-color: #14213d;
 }
 
-.services .icon-box:hover .icon i {
-  color: var(--mh-accent) !important;
-  transform: scale(1.1);
+.services .icon-box.svc-dark h4 a,
+.services .icon-box.svc-dark p,
+.services .icon-box.svc-dark .svc-tags {
+  color: #fff;
 }
 
-.services .icon-box:focus-within .icon,
-.services .icon-box:active .icon {
-  transform: scale(1.12) rotate(-6deg);
+.services .icon-box.svc-dark p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.services .icon-box.svc-dark .svc-tags {
+  color: #8fb4ff;
+}
+
+.services .icon-box.svc-dark .icon-chip {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.services .icon-box.svc-accent {
+  background: linear-gradient(135deg, #2b5fe0, #4f8bff);
+  border-color: transparent;
+}
+
+.services .icon-box.svc-accent h4 a,
+.services .icon-box.svc-accent p,
+.services .icon-box.svc-accent .svc-tags {
+  color: #fff;
+}
+
+.services .icon-box.svc-accent p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.services .icon-box.svc-accent .icon-chip {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.services .icon-box.svc-cream {
+  background: #f3efe6;
+  border-color: #ece5d6;
+}
+
+.services .icon-box.svc-cream .icon-chip {
+  background: rgba(28, 28, 28, 0.07);
+}
+
+.services .icon-box.svc-light .icon-chip {
+  background: rgba(79, 139, 255, 0.12);
+  color: #2b5fe0;
 }
 
 /* ---------- Testimonials ---------- */
