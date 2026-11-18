@@ -31,14 +31,6 @@
   margin: 0 auto;
 }
 
-.mw-intro {
-  max-width: 560px;
-  color: var(--mh-ink-soft);
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 18px;
-}
-
 /* Full-bleed: let the card break out of the container and span the
    full viewport width, so it reads as covering the page rather than
    sitting in a narrow column. */
