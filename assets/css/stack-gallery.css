@@ -12,7 +12,7 @@
 }
 
 .mw-wrap {
-  max-width: 900px;
+  max-width: 1040px;
   margin: 0 auto;
 }
 
@@ -24,8 +24,8 @@
 .ms-stage {
   position: relative;
   width: 100%;
-  max-width: 620px;
-  height: clamp(300px, 42vw, 460px);
+  max-width: 780px;
+  height: clamp(360px, 50vw, 560px);
   margin: 30px auto 0;
 }
 
@@ -152,8 +152,8 @@
 /* Caption lives below the stack, in the page's own text style —
    not overlaid on the photo. */
 .ms-info {
-  max-width: 560px;
-  margin: 26px auto 0;
+  max-width: 620px;
+  margin: 54px auto 0;
   text-align: center;
 }
 
