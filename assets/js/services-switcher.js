@@ -1,7 +1,9 @@
-/* Services switcher — a vertical pill tab list that drives a single
-   animated display card (icon + chip + tagline), cross-fading between
-   services and auto-rotating, with a couple of ghost cards behind it
-   for the stacked-deck look. */
+/* Services switcher — a vertical pill tab list on the left drives a
+   stacked photo-card carousel on the right. All cards exist in the DOM
+   at once; only their status class (active / prev / next / hidden)
+   changes, so the browser can transition transform/opacity/filter
+   smoothly between them — the same idea as an AnimatePresence stack,
+   done with plain CSS transitions. */
 (function () {
   "use strict";
 
@@ -10,6 +12,10 @@
       window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
+  }
+
+  function pad(n) {
+    return n < 10 ? "0" + n : "" + n;
   }
 
   function init(root) {
@@ -26,39 +32,83 @@
     var autoplayMs = parseInt(root.getAttribute("data-autoplay"), 10) || 0;
 
     var tabs = Array.prototype.slice.call(root.querySelectorAll(".svc-tab"));
-    var card = root.querySelector(".svc-card");
-    var photoEl = card.querySelector(".svc-card-photo img");
-    var iconEl = card.querySelector(".svc-card-icon i");
-    var chipEl = card.querySelector(".svc-chip");
-    var taglineEl = card.querySelector(".svc-tagline");
+    var stack = root.querySelector(".svc-stack");
+    if (!stack) return;
 
-    function pad(n) {
-      return n < 10 ? "0" + n : "" + n;
+    var cards = items.map(function (item, index) {
+      var card = document.createElement("div");
+      card.className = "svc-card icon-box " + (item.variant || "svc-dark");
+
+      var photo = document.createElement("div");
+      photo.className = "svc-card-photo";
+      var img = document.createElement("img");
+      img.src = item.img || "";
+      img.alt = item.title || item.tag || "";
+      img.loading = "lazy";
+      photo.appendChild(img);
+
+      var scrim = document.createElement("div");
+      scrim.className = "svc-card-scrim";
+      scrim.setAttribute("aria-hidden", "true");
+
+      var badge = document.createElement("span");
+      badge.className = "svc-badge";
+      var dot = document.createElement("span");
+      dot.className = "svc-dot";
+      badge.appendChild(dot);
+      badge.appendChild(document.createTextNode("GIS • RS • AI"));
+
+      var icon = document.createElement("div");
+      icon.className = "svc-card-icon";
+      var iconI = document.createElement("i");
+      iconI.className = item.icon || "";
+      icon.appendChild(iconI);
+
+      var footer = document.createElement("div");
+      footer.className = "svc-card-footer";
+      var chip = document.createElement("span");
+      chip.className = "svc-chip";
+      chip.textContent = pad(index + 1) + " • " + (item.tag || "").toUpperCase();
+      var tagline = document.createElement("p");
+      tagline.className = "svc-tagline";
+      tagline.textContent = item.desc || "";
+      footer.appendChild(chip);
+      footer.appendChild(tagline);
+
+      card.appendChild(photo);
+      card.appendChild(scrim);
+      card.appendChild(badge);
+      card.appendChild(icon);
+      card.appendChild(footer);
+      stack.appendChild(card);
+      return card;
+    });
+
+    function statusFor(index) {
+      var diff = index - active;
+      var half = n / 2;
+      if (diff > half) diff -= n;
+      if (diff < -half) diff += n;
+      if (diff === 0) return "active";
+      if (diff === -1) return "prev";
+      if (diff === 1) return "next";
+      return "hidden";
     }
 
-    function applyIndex(index) {
-      var item = items[index];
-      card.className = "svc-card icon-box " + (item.variant || "svc-dark");
-      if (photoEl && item.img) {
-        photoEl.src = item.img;
-        photoEl.alt = item.title || item.tag || "";
-      }
-      iconEl.className = item.icon;
-      chipEl.textContent = pad(index + 1) + " • " + item.tag.toUpperCase();
-      taglineEl.textContent = item.desc;
+    function render() {
+      cards.forEach(function (card, index) {
+        card.classList.remove("is-active", "is-prev", "is-next", "is-hidden");
+        card.classList.add("is-" + statusFor(index));
+      });
       tabs.forEach(function (tab, i) {
-        tab.classList.toggle("is-active", i === index);
+        tab.classList.toggle("is-active", i === active);
       });
     }
 
     function goTo(index) {
       if (index === active) return;
       active = index;
-      card.classList.add("is-fading");
-      window.setTimeout(function () {
-        applyIndex(active);
-        card.classList.remove("is-fading");
-      }, 220);
+      render();
       restartAutoplay();
     }
 
@@ -97,6 +147,7 @@
       autoplayPaused = false;
     });
 
+    render();
     startAutoplay();
   }
 
