@@ -843,33 +843,21 @@ section { background: transparent !important; }
   transition: opacity 0.3s ease;
 }
 
-/* A real, slowly-zooming photo per service (Ken Burns effect), with a
-   dark scrim underneath the text so it stays legible on any image. */
+/* Hosts the live 3D icon (a <canvas>, moved here by services-3d.js when
+   this card becomes active). The card's own navy/amber/cream variant
+   colour shows through behind it, since the renderer clears to
+   transparent — that's the fallback look if WebGL isn't available. */
 .svc-card-photo {
   position: absolute;
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: rgba(20, 33, 61, 0.4);
 }
 
-.svc-card-photo img {
+.svc-card-photo canvas {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
-  font-size: 0;
-  color: transparent;
-  animation: svcKenBurns 9s ease-in-out infinite alternate;
-}
-
-@keyframes svcKenBurns {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.12);
-  }
 }
 
 .svc-card-scrim {

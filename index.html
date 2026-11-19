@@ -430,12 +430,12 @@
         </div>
 
         <div class="svc-switcher" data-autoplay="4000" data-items='[
-          {"icon":"bx bx-building-house","tag":"Government","title":"Government & Municipalities","desc":"Land records, zoning and permit mapping paired with satellite monitoring and AI-based violation detection.","variant":"svc-dark","img":"https://images.unsplash.com/photo-1647964435203-36e0d18e97c7?fm=jpg&q=70&w=1200&auto=format&fit=crop"},
-          {"icon":"bx bx-gas-pump","tag":"Oil & Gas","title":"Oil & Gas","desc":"Pipeline and facility GIS mapping, satellite environmental monitoring, and AI models for leak detection.","variant":"svc-accent","img":"https://images.unsplash.com/photo-1517067869005-a8978defe0c5?fm=jpg&q=70&w=1200&auto=format&fit=crop"},
-          {"icon":"bx bx-brain","tag":"AI Detection","title":"AI Detection Models","desc":"Custom computer-vision models for object, change and anomaly detection on satellite and drone imagery.","variant":"svc-cream","img":"https://images.unsplash.com/photo-1762707867281-2ffc60c8bbb3?fm=jpg&q=70&w=1200&auto=format&fit=crop"},
-          {"icon":"bx bx-wrench","tag":"Infrastructure","title":"Infrastructure & Utilities","desc":"Asset and network mapping for utilities, remote-sensing inspection, and AI-driven anomaly and leak detection.","variant":"svc-dark","img":"https://images.unsplash.com/photo-1741323398831-90322fa39aa7?fm=jpg&q=70&w=1200&auto=format&fit=crop"},
-          {"icon":"bx bx-alarm-exclamation","tag":"Disaster Risk","title":"Disaster Management & Risk","desc":"Hazard mapping, real-time satellite disaster monitoring, and AI-based early-warning models.","variant":"svc-accent","img":"https://images.unsplash.com/photo-1764684994219-8347a5ab0e5e?fm=jpg&q=70&w=1200&auto=format&fit=crop"},
-          {"icon":"bx bx-leaf","tag":"Environment","title":"Environment & Agriculture","desc":"Land-use and habitat mapping, NDVI crop-health monitoring, and AI models for yield prediction.","variant":"svc-cream","img":"https://images.unsplash.com/photo-1788122290883-6587385ffb8c?fm=jpg&q=70&w=1200&auto=format&fit=crop"}
+          {"icon":"bx bx-building-house","tag":"Government","title":"Government & Municipalities","desc":"Land records, zoning and permit mapping paired with satellite monitoring and AI-based violation detection.","variant":"svc-dark"},
+          {"icon":"bx bx-gas-pump","tag":"Oil & Gas","title":"Oil & Gas","desc":"Pipeline and facility GIS mapping, satellite environmental monitoring, and AI models for leak detection.","variant":"svc-accent"},
+          {"icon":"bx bx-brain","tag":"AI Detection","title":"AI Detection Models","desc":"Custom computer-vision models for object, change and anomaly detection on satellite and drone imagery.","variant":"svc-cream"},
+          {"icon":"bx bx-wrench","tag":"Infrastructure","title":"Infrastructure & Utilities","desc":"Asset and network mapping for utilities, remote-sensing inspection, and AI-driven anomaly and leak detection.","variant":"svc-dark"},
+          {"icon":"bx bx-alarm-exclamation","tag":"Disaster Risk","title":"Disaster Management & Risk","desc":"Hazard mapping, real-time satellite disaster monitoring, and AI-based early-warning models.","variant":"svc-accent"},
+          {"icon":"bx bx-leaf","tag":"Environment","title":"Environment & Agriculture","desc":"Land-use and habitat mapping, NDVI crop-health monitoring, and AI models for yield prediction.","variant":"svc-cream"}
         ]'>
           <div class="svc-tabs">
             <button type="button" class="svc-tab is-active" data-index="0">
@@ -695,6 +695,10 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/stack-gallery.js"></script>
   <script src="assets/js/services-switcher.js"></script>
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@latest/build/three.module.js" } }
+  </script>
+  <script type="module" src="assets/js/services-3d.js"></script>
   <script src="assets/js/moments-gallery.js"></script>
   <script src="assets/js/references-marquee.js"></script>
   <script src="assets/js/hero-rotator.js"></script>

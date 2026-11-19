@@ -41,11 +41,6 @@
 
       var photo = document.createElement("div");
       photo.className = "svc-card-photo";
-      var img = document.createElement("img");
-      img.src = item.img || "";
-      img.alt = item.title || item.tag || "";
-      img.loading = "lazy";
-      photo.appendChild(img);
 
       var scrim = document.createElement("div");
       scrim.className = "svc-card-scrim";
@@ -103,6 +98,17 @@
       tabs.forEach(function (tab, i) {
         tab.classList.toggle("is-active", i === active);
       });
+      // Let the (separately loaded) 3D icon module know which card is now
+      // active, so it can move its canvas into that card's photo slot.
+      root.dispatchEvent(
+        new CustomEvent("svc:active-change", {
+          detail: {
+            index: active,
+            card: cards[active],
+            photoEl: cards[active].querySelector(".svc-card-photo"),
+          },
+        })
+      );
     }
 
     function goTo(index) {
