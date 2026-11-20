@@ -14,10 +14,6 @@
     );
   }
 
-  function pad(n) {
-    return n < 10 ? "0" + n : "" + n;
-  }
-
   function init(root) {
     var items;
     try {
@@ -35,6 +31,9 @@
     var stack = root.querySelector(".svc-stack");
     if (!stack) return;
 
+    // Bare cards now — just a slot to host the live 3D model, no badge,
+    // no caption, no scrim. The sector name/description already live in
+    // the left-hand tab list, so the card itself stays undecorated.
     var cards = items.map(function (item, index) {
       var card = document.createElement("div");
       card.className = "svc-card icon-box " + (item.variant || "svc-dark");
@@ -42,39 +41,7 @@
       var photo = document.createElement("div");
       photo.className = "svc-card-photo";
 
-      var scrim = document.createElement("div");
-      scrim.className = "svc-card-scrim";
-      scrim.setAttribute("aria-hidden", "true");
-
-      var badge = document.createElement("span");
-      badge.className = "svc-badge";
-      var dot = document.createElement("span");
-      dot.className = "svc-dot";
-      badge.appendChild(dot);
-      badge.appendChild(document.createTextNode("GIS • RS • AI"));
-
-      var icon = document.createElement("div");
-      icon.className = "svc-card-icon";
-      var iconI = document.createElement("i");
-      iconI.className = item.icon || "";
-      icon.appendChild(iconI);
-
-      var footer = document.createElement("div");
-      footer.className = "svc-card-footer";
-      var chip = document.createElement("span");
-      chip.className = "svc-chip";
-      chip.textContent = pad(index + 1) + " • " + (item.tag || "").toUpperCase();
-      var tagline = document.createElement("p");
-      tagline.className = "svc-tagline";
-      tagline.textContent = item.desc || "";
-      footer.appendChild(chip);
-      footer.appendChild(tagline);
-
       card.appendChild(photo);
-      card.appendChild(scrim);
-      card.appendChild(badge);
-      card.appendChild(icon);
-      card.appendChild(footer);
       stack.appendChild(card);
       return card;
     });

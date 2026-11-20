@@ -363,7 +363,8 @@ import * as THREE from "three";
 
     function showIcon(index) {
       while (iconGroup.children.length) {
-        var child = iconGroup.children.pop();
+        var child = iconGroup.children[iconGroup.children.length - 1];
+        iconGroup.remove(child);
         disposeGeometries(child);
       }
       var builder = builders[index % builders.length];
