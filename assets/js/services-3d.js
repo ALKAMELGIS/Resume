@@ -340,13 +340,14 @@ import * as THREE from "three";
     renderer.setClearColor(0x000000, 0);
 
     var scene = new THREE.Scene();
-    // Wider FOV + a lookAt point raised toward the taller models' (the
-    // government dome, the transmission tower) middle, so every model
-    // fits inside the frame top-to-bottom with room to spare, even on a
-    // wide/short card.
-    var camera = new THREE.PerspectiveCamera(36, 1, 0.1, 50);
-    camera.position.set(2.7, 1.95, 3.45);
-    camera.lookAt(0, 0.3, 0);
+    // The tallest model (the government building, base to the dome's
+    // top ball) spans roughly y=-0.63 to y=1.66 — its own vertical
+    // midpoint, ~0.52, is the lookAt target. A wide FOV plus a camera
+    // that isn't looking steeply downward (kept low relative to its
+    // distance) gives that whole span real headroom on every card size.
+    var camera = new THREE.PerspectiveCamera(42, 1, 0.1, 50);
+    camera.position.set(3.2, 1.3, 4.0);
+    camera.lookAt(0, 0.52, 0);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.6));
     var key = new THREE.DirectionalLight(0xfff1d8, 1.7);
