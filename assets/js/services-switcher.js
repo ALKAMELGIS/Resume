@@ -36,7 +36,11 @@
     // the left-hand tab list, so the card itself stays undecorated.
     var cards = items.map(function (item, index) {
       var card = document.createElement("div");
-      card.className = "svc-card icon-box " + (item.variant || "svc-dark");
+      // Deliberately NOT "icon-box" — that class carries an older static
+      // bento-grid look (white fill, border, hover-lift shadow) from
+      // elsewhere in this stylesheet that has nothing to do with this
+      // carousel, and would otherwise bleed onto these cards too.
+      card.className = "svc-card " + (item.variant || "svc-dark");
 
       var photo = document.createElement("div");
       photo.className = "svc-card-photo";

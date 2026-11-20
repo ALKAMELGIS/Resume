@@ -340,9 +340,13 @@ import * as THREE from "three";
     renderer.setClearColor(0x000000, 0);
 
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
-    camera.position.set(2.15, 1.55, 2.8);
-    camera.lookAt(0, 0.2, 0);
+    // Wider FOV + a lookAt point raised toward the taller models' (the
+    // government dome, the transmission tower) middle, so every model
+    // fits inside the frame top-to-bottom with room to spare, even on a
+    // wide/short card.
+    var camera = new THREE.PerspectiveCamera(36, 1, 0.1, 50);
+    camera.position.set(2.7, 1.95, 3.45);
+    camera.lookAt(0, 0.3, 0);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.6));
     var key = new THREE.DirectionalLight(0xfff1d8, 1.7);
