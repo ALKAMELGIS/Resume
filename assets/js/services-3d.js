@@ -340,8 +340,8 @@ import * as THREE from "three";
     renderer.setClearColor(0x000000, 0);
 
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(32, 1, 0.1, 50);
-    camera.position.set(2.6, 1.9, 3.4);
+    var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
+    camera.position.set(2.15, 1.55, 2.8);
     camera.lookAt(0, 0.2, 0);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.6));
