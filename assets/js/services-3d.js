@@ -5,6 +5,8 @@
    "Agentic Factory" three.js demo, adapted into six small GIS-sector
    icons instead of one large machine. */
 import * as THREE from "three";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 
 (function () {
   "use strict";
@@ -41,33 +43,57 @@ import * as THREE from "three";
     dark: 0x12171d,
   };
 
+  // MeshPhysicalMaterial + a soft clearcoat is the usual trick behind
+  // that polished "3D clay/toy" icon look — a thin glossy layer over a
+  // mostly-matte base coat, combined with the scene's environment map
+  // below for soft, realistic highlights instead of flat shading.
   function mat(color, metalness, roughness, extra) {
-    var params = { color: color, metalness: metalness, roughness: roughness };
+    var params = {
+      color: color,
+      metalness: metalness,
+      roughness: roughness,
+      clearcoat: 0.55,
+      clearcoatRoughness: 0.28,
+      envMapIntensity: 1,
+    };
     if (extra) for (var k in extra) params[k] = extra[k];
-    return new THREE.MeshStandardMaterial(params);
+    return new THREE.MeshPhysicalMaterial(params);
   }
 
   var M = {
-    amber: mat(PALETTE.amber, 0.45, 0.35),
-    navy: mat(PALETTE.navy, 0.3, 0.55),
-    ivory: mat(PALETTE.ivory, 0.08, 0.6),
-    chrome: mat(PALETTE.chrome, 0.85, 0.22),
-    steel: mat(PALETTE.steel, 0.55, 0.4),
-    dark: mat(PALETTE.dark, 0.35, 0.55),
-    glass: mat(0x8fb3cf, 0.2, 0.15, { transparent: true, opacity: 0.35 }),
-    glow: mat(PALETTE.amber, 0.2, 0.3, {
+    amber: mat(PALETTE.amber, 0.45, 0.3),
+    navy: mat(PALETTE.navy, 0.3, 0.45),
+    ivory: mat(PALETTE.ivory, 0.05, 0.45),
+    chrome: mat(PALETTE.chrome, 0.9, 0.15, { clearcoat: 0.8, clearcoatRoughness: 0.1 }),
+    steel: mat(PALETTE.steel, 0.6, 0.35),
+    dark: mat(PALETTE.dark, 0.35, 0.4),
+    glass: mat(0x8fb3cf, 0.2, 0.1, { transparent: true, opacity: 0.35, clearcoat: 1, clearcoatRoughness: 0.05 }),
+    glow: mat(PALETTE.amber, 0.2, 0.25, {
       emissive: PALETTE.amber,
       emissiveIntensity: 1.5,
+      clearcoat: 0.7,
+      clearcoatRoughness: 0.15,
     }),
-    glowWhite: mat(0xfff3d7, 0.1, 0.3, {
+    glowWhite: mat(0xfff3d7, 0.1, 0.25, {
       emissive: 0xfff0d0,
       emissiveIntensity: 1.6,
+      clearcoat: 0.7,
+      clearcoatRoughness: 0.15,
     }),
-    leaf: mat(0x8fae6b, 0.1, 0.55),
+    leaf: mat(0x8fae6b, 0.1, 0.45),
   };
 
+  // A box with gently rounded edges/corners instead of sharp ones — the
+  // single biggest visual lever for a "soft, premium toy" read instead
+  // of a flat CAD-primitive one. The radius is derived from the box's
+  // own smallest dimension so a thin plank never gets an oversized,
+  // degenerate bevel.
   function box(parent, w, h, d, x, y, z, m) {
-    var o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m || M.ivory);
+    var radius = Math.min(w, h, d) * 0.22;
+    var o = new THREE.Mesh(
+      new RoundedBoxGeometry(w, h, d, 3, radius),
+      m || M.ivory
+    );
     o.position.set(x, y, z);
     parent.add(o);
     return o;
@@ -75,7 +101,7 @@ import * as THREE from "three";
 
   function cyl(parent, rt, rb, h, x, y, z, m, segments) {
     var o = new THREE.Mesh(
-      new THREE.CylinderGeometry(rt, rb, h, segments || 24),
+      new THREE.CylinderGeometry(rt, rb, h, segments || 28),
       m || M.chrome
     );
     o.position.set(x, y, z);
@@ -84,7 +110,7 @@ import * as THREE from "three";
   }
 
   function ball(parent, r, x, y, z, m) {
-    var o = new THREE.Mesh(new THREE.SphereGeometry(r, 20, 14), m || M.chrome);
+    var o = new THREE.Mesh(new THREE.SphereGeometry(r, 28, 20), m || M.chrome);
     o.position.set(x, y, z);
     parent.add(o);
     return o;
@@ -336,10 +362,23 @@ import * as THREE from "three";
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
+    renderer.toneMappingExposure = 1.1;
     renderer.setClearColor(0x000000, 0);
 
     var scene = new THREE.Scene();
+
+    // A soft, neutral studio environment map gives every clearcoated
+    // material realistic, rounded highlights instead of flat shading —
+    // this one change does more for the "real/premium" look than any
+    // single light could.
+    try {
+      var pmrem = new THREE.PMREMGenerator(renderer);
+      scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.035).texture;
+      pmrem.dispose();
+    } catch (e) {
+      // No environment map if this fails for any reason — materials
+      // just fall back to being lit by the scene lights alone.
+    }
     // The tallest model (the government building, base to the dome's
     // top ball) spans roughly y=-0.63 to y=1.66 — its own vertical
     // midpoint, ~0.52, is the lookAt target. A wide FOV plus a camera
@@ -349,11 +388,11 @@ import * as THREE from "three";
     camera.position.set(3.2, 1.3, 4.0);
     camera.lookAt(0, 0.52, 0);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-    var key = new THREE.DirectionalLight(0xfff1d8, 1.7);
+    scene.add(new THREE.HemisphereLight(0xfff6e8, 0x2a3142, 0.65));
+    var key = new THREE.DirectionalLight(0xfff1d8, 1.4);
     key.position.set(-3, 5, 4);
     scene.add(key);
-    var rim = new THREE.DirectionalLight(0xbfd0ea, 1.0);
+    var rim = new THREE.DirectionalLight(0xbfd0ea, 0.85);
     rim.position.set(3, 2, -4);
     scene.add(rim);
 
